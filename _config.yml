@@ -1,9 +1,10 @@
 # Site settings
-title: Highlights
+title: Alex and Kimberly Get Married
 email: youremailaddress@gmail.com
-description: The Jekyll version of the Highlights theme by HTML5 UP.
+description: A website to celebrate the wedding of Kimberly Lowell an Alex King.
 baseurl: "/thekings" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site
+icon_sizes: [32, 57, 76, 96]
 
 # Social settings
 500px_url:
