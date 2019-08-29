@@ -1,3 +1,6 @@
+---
+---
+
 @import 'libs/vars';
 @import 'libs/functions';
 @import 'libs/mixins';
@@ -1112,7 +1115,7 @@
 			background: transparentize(_palette(bg), 0.05);
 			bottom: 0;
 			left: 50%;
-			margin-left: -17.5em;
+			margin-left: -22.5em;
 			padding: $size-padding-lr;
 			position: absolute;
 
