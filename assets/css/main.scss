@@ -389,6 +389,8 @@
 				margin-top: 0;
 			}
 		}
+
+
 	}
 
 /* Form */
@@ -1137,7 +1139,10 @@
 				color: _palette(alt, fg-bold);
 				font-weight: _font(weight-bold);
 				margin: (_size(element-margin) * 0.75) 0 0 0;
-				text-align: inherit;
+				text-align: center;
+				max-width: 700px;
+				margin-left: auto;
+				margin-right: auto;
 			}
 		}
 
@@ -1493,4 +1498,23 @@
 				}
 			}
 
+	}
+
+	/* Countdown timer */
+	@-o-keyframes fadeIt {
+	  0%   { color: #FFFFFF; }
+	  50%  { color: _palette(accent1, bg) }
+	  100% { color: #FFFFFF; }
+	}
+
+	@keyframes fadeIt {
+	  0%   { color: #FFFFFF; }
+	  50%  { color: _palette(accent1, bg); }
+	  100% { color: #FFFFFF; }
+	}
+
+	.pulse {
+		background-image:none !important;
+		-o-animation: fadeIt 1s ease-in-out;
+		animation: fadeIt 1s ease-in-out;
 	}

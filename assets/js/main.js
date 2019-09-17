@@ -19,6 +19,64 @@
 			$body = $('body'),
 			$html = $('html');
 
+		//Countdown timer
+		var end = new Date('08/08/2020 4:00 PM');
+
+	    var _second = 1000;
+	    var _minute = _second * 60;
+	    var _hour = _minute * 60;
+	    var _day = _hour * 24;
+	    var timer;
+
+	    function showRemaining() {
+	        var now = new Date();
+	        var distance = end - now;
+	        if (distance < 0) {
+
+	            clearInterval(timer);
+	            $('#countdown').hide();
+
+	            return;
+	        } else {
+				$('#countdown').show();
+			}
+	        var days = Math.floor(distance / _day);
+	        var hours = Math.floor((distance % _day) / _hour);
+	        var minutes = Math.floor((distance % _hour) / _minute);
+	        var seconds = Math.floor((distance % _minute) / _second);
+
+	        document.getElementById('countdown-d').innerHTML = days;
+	        document.getElementById('countdown-h').innerHTML = hours;
+	        document.getElementById('countdown-m').innerHTML = minutes;
+	        document.getElementById('countdown-s').innerHTML = seconds;
+
+			if (days === 1) {
+				$('#countdown-s-d').hide();
+			} else {
+				$('#countdown-s-d').show();
+			}
+
+			if (hours === 1) {
+				$('#countdown-s-h').hide();
+			} else {
+				$('#countdown-s-h').show();
+			}
+
+			if (minutes === 1) {
+				$('#countdown-s-m').hide();
+			} else {
+				$('#countdown-s-m').show();
+			}
+
+			if (seconds === 1) {
+				$('#countdown-s-s').hide();
+			} else {
+				$('#countdown-s-s').show();
+			}
+	    }
+
+	    timer = setInterval(showRemaining, 1000);
+
 		// Disable animations/transitions until the page has loaded.
 			$html.addClass('is-loading');
 
