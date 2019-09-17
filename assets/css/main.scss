@@ -4,8 +4,8 @@
 @import 'libs/vars';
 @import 'libs/functions';
 @import 'libs/mixins';
-@import "fa/fontawesome.scss";
-@import "fa/solid.scss";
+@import 'fa/fontawesome.scss';
+@import 'fa/solid.scss';
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,400italic,700,800");
 
 /*
@@ -266,6 +266,8 @@
 					@include vendor('transform-origin', '50% 50%');
 					color: _palette(accent2, fg-lighter);
 					content: '\f1ce';
+					font-family: "Font Awesome 5 Free";
+					font-weight: 900;
 					cursor: default;
 					display: block;
 					font-size: 2em;
