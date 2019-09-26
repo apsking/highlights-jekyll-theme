@@ -9,10 +9,28 @@
 <body>
 {% include header.html %}
 
+<nav id="navigation">
+	<div class="nav-container">
+		<ul>
+			<li>
+				<a href="#rsvp" class="scrolly" title="RSVP">RSVP</a>
+			</li>
+			<li>
+				<a href="#intro" class="scrolly" title="The Couple">The Couple</a>
+			</li>
+			<li>
+				<a href="#directions" class="scrolly" title="The Venue">The Venue</a>
+
+			</li>
+			<li>
+				<a href="#schedule" class="scrolly" title="The Schedule">The Schedule</a>
+			</li>
+		</ul>
+	</div>
+</nav>
 <!-- One -->
 <section id="intro" class="main special">
 	<div class="container">
-		<span class="image fit primary"><img src="assets/images/pic01.jpg" alt="" /></span>
 		<div class="content">
 			<header class="major">
 				<h2>
@@ -32,10 +50,19 @@
 	</div>
 </section>
 
+<section id="photos" class="main special">
+	<div class="">
+		<div class="image-carousel">
+			<img src='assets/images/pic01.jpg'></img>
+			<img src='assets/images/pic02.jpg'></img>
+			<img src='assets/images/pic03.jpg'></img>
+	 	</div>
+	</div>
+</section>
+
 <!-- Two -->
 <section id="schedule" class="main special">
 	<div class="container">
-		<span class="image fit primary"><img src="assets/images/pic02.jpg" alt="" /></span>
 		<div class="content">
 			<header class="major">
 				<h2>
@@ -114,7 +141,6 @@
 <!-- Map -->
 <section id="map" class="main special">
 	<div class="container">
-		<span class="image fit primary"><img src="assets/images/pic03.jpg" alt="" /></span>
 		<div class="content">
 			<header class="major">
 				<h2>
@@ -139,7 +165,7 @@
 		<div class="content">
 			<header class="major">
 				<h2>
-					Whats it like there?
+					What's it like there?
 					<a href="#header" class="scrolly goto-home" title="To Top"></a>
 				</h2>
 			</header>

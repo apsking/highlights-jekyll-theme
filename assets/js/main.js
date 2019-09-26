@@ -19,63 +19,85 @@
 			$body = $('body'),
 			$html = $('html');
 
-		//Countdown timer
-		var end = new Date('08/08/2020 4:00 PM');
+			// //Sticky header
+			// $window.scroll(function() {
+			// 	var header = $(document).scrollTop();
+			// 	var headerHeight = 510;// $("#intro").outerHeight() + $("#navigation").outerHeight();
+			// 	console.log(`header: ${header}, headerHeight: ${headerHeight}`)
+			// 	if (header > headerHeight) {
+			//     	$("#navigation").addClass("fixed");
+			// 	} else {
+			//     	$("#navigation").removeClass("fixed");
+			// 	}
+			// });
+			stickybits('#navigation');
 
-	    var _second = 1000;
-	    var _minute = _second * 60;
-	    var _hour = _minute * 60;
-	    var _day = _hour * 24;
-	    var timer;
+			$('.image-carousel').slick({
+			    dots: true,
+				adaptiveHeight: true,
+				autoplay: true,
+				autoplaySpeed: 7000,
+				//prevArrow: '<span class="fas fa-3x fa-mug-hot"></span>',
+				//nextArrow: '<span class="fas fa-3x fa-mug-hot"></span>',
+			});
 
-	    function showRemaining() {
-	        var now = new Date();
-	        var distance = end - now;
-	        if (distance < 0) {
-
-	            clearInterval(timer);
-	            $('#countdown').hide();
-
-	            return;
-	        } else {
-				$('#countdown').show();
-			}
-	        var days = Math.floor(distance / _day);
-	        var hours = Math.floor((distance % _day) / _hour);
-	        var minutes = Math.floor((distance % _hour) / _minute);
-	        var seconds = Math.floor((distance % _minute) / _second);
-
-	        document.getElementById('countdown-d').innerHTML = days;
-	        document.getElementById('countdown-h').innerHTML = hours;
-	        document.getElementById('countdown-m').innerHTML = minutes;
-	        document.getElementById('countdown-s').innerHTML = seconds;
-
-			if (days === 1) {
-				$('#countdown-s-d').hide();
-			} else {
-				$('#countdown-s-d').show();
-			}
-
-			if (hours === 1) {
-				$('#countdown-s-h').hide();
-			} else {
-				$('#countdown-s-h').show();
-			}
-
-			if (minutes === 1) {
-				$('#countdown-s-m').hide();
-			} else {
-				$('#countdown-s-m').show();
-			}
-
-			if (seconds === 1) {
-				$('#countdown-s-s').hide();
-			} else {
-				$('#countdown-s-s').show();
-			}
-	    }
-
-	    timer = setInterval(showRemaining, 1000);
+		// //Countdown timer
+		// var end = new Date('08/08/2020 4:00 PM');
+		//
+	    // var _second = 1000;
+	    // var _minute = _second * 60;
+	    // var _hour = _minute * 60;
+	    // var _day = _hour * 24;
+	    // var timer;
+		//
+	    // function showRemaining() {
+	    //     var now = new Date();
+	    //     var distance = end - now;
+	    //     if (distance < 0) {
+		//
+	    //         clearInterval(timer);
+	    //         $('#countdown').hide();
+		//
+	    //         return;
+	    //     } else {
+		// 		$('#countdown').show();
+		// 	}
+	    //     var days = Math.floor(distance / _day);
+	    //     var hours = Math.floor((distance % _day) / _hour);
+	    //     var minutes = Math.floor((distance % _hour) / _minute);
+	    //     var seconds = Math.floor((distance % _minute) / _second);
+		//
+	    //     document.getElementById('countdown-d').innerHTML = days;
+	    //     document.getElementById('countdown-h').innerHTML = hours;
+	    //     document.getElementById('countdown-m').innerHTML = minutes;
+	    //     document.getElementById('countdown-s').innerHTML = seconds;
+		//
+		// 	if (days === 1) {
+		// 		$('#countdown-s-d').hide();
+		// 	} else {
+		// 		$('#countdown-s-d').show();
+		// 	}
+		//
+		// 	if (hours === 1) {
+		// 		$('#countdown-s-h').hide();
+		// 	} else {
+		// 		$('#countdown-s-h').show();
+		// 	}
+		//
+		// 	if (minutes === 1) {
+		// 		$('#countdown-s-m').hide();
+		// 	} else {
+		// 		$('#countdown-s-m').show();
+		// 	}
+		//
+		// 	if (seconds === 1) {
+		// 		$('#countdown-s-s').hide();
+		// 	} else {
+		// 		$('#countdown-s-s').show();
+		// 	}
+	    // }
+		//
+	    // timer = setInterval(showRemaining, 1000);
 
 		// Disable animations/transitions until the page has loaded.
 			$html.addClass('is-loading');
@@ -155,13 +177,13 @@
 
 						skel.on('-medium !medium', function() {
 
-							$headerTitle
-								.css('position', 'fixed')
-								.css('height', 'auto')
-								.css('top', '50%')
-								.css('left', '0')
-								.css('width', '100%')
-								.css('margin-top', ($headerTitle.outerHeight() / -2));
+							// $headerTitle
+							// 	.css('position', 'fixed')
+							// 	.css('height', 'auto')
+							// 	.css('top', '50%')
+							// 	.css('left', '0')
+							// 	.css('width', '100%')
+							// 	.css('margin-top', ($headerTitle.outerHeight() / -2));
 
 						});
 
@@ -212,65 +234,65 @@
 				});
 
 		// Main sections.
-			$('.main').each(function() {
-
-				var $this = $(this),
-					$primaryImg = $this.find('.image.primary > img'),
-					$bg,
-					options;
-
-				// No primary image? Bail.
-					if ($primaryImg.length == 0)
-						return;
-
-				// Hack: IE8 fallback.
-					if (skel.vars.IEVersion < 9) {
-
-						$this
-							.css('background-image', 'url("' + $primaryImg.attr('src') + '")')
-							.css('-ms-behavior', 'url("assets/css/ie/backgroundsize.min.htc")');
-
-						return;
-
-					}
-
-				// Create bg and append it to body.
-					$bg = $('<div class="main-bg" id="' + $this.attr('id') + '-bg"></div>')
-						.css('background-image', (
-							'url("assets/css/images/overlay.png"), url("' + $primaryImg.attr('src') + '")'
-						))
-						.appendTo($body);
-
-				// Scrollex.
-					options = {
-						mode: 'middle',
-						delay: 200,
-						top: '-10vh',
-						bottom: '-10vh'
-					};
-
-					if (skel.canUse('transition')) {
-
-						options.init = function() { $bg.removeClass('active'); };
-						options.enter = function() { $bg.addClass('active'); };
-						options.leave = function() { $bg.removeClass('active'); };
-
-					}
-					else {
-
-						$bg
-							.css('opacity', 1)
-							.hide();
-
-						options.init = function() { $bg.fadeOut(0); };
-						options.enter = function() { $bg.fadeIn(400); };
-						options.leave = function() { $bg.fadeOut(400); };
-
-					}
-
-					$this.scrollex(options);
-
-			});
+			// $('.main').each(function() {
+			//
+			// 	var $this = $(this),
+			// 		$primaryImg = $this.find('.image.primary > img'),
+			// 		$bg,
+			// 		options;
+			//
+			// 	// No primary image? Bail.
+			// 		if ($primaryImg.length == 0)
+			// 			return;
+			//
+			// 	// Hack: IE8 fallback.
+			// 		if (skel.vars.IEVersion < 9) {
+			//
+			// 			$this
+			// 				.css('background-image', 'url("' + $primaryImg.attr('src') + '")')
+			// 				.css('-ms-behavior', 'url("assets/css/ie/backgroundsize.min.htc")');
+			//
+			// 			return;
+			//
+			// 		}
+			//
+			// 	// Create bg and append it to body.
+			// 		$bg = $('<div class="main-bg" id="' + $this.attr('id') + '-bg"></div>')
+			// 			.css('background-image', (
+			// 				'url("assets/css/images/overlay.png"), url("' + $primaryImg.attr('src') + '")'
+			// 			))
+			// 			.appendTo($body);
+			//
+			// 	// Scrollex.
+			// 		options = {
+			// 			mode: 'middle',
+			// 			delay: 200,
+			// 			top: '-10vh',
+			// 			bottom: '-10vh'
+			// 		};
+			//
+			// 		if (skel.canUse('transition')) {
+			//
+			// 			options.init = function() { $bg.removeClass('active'); };
+			// 			options.enter = function() { $bg.addClass('active'); };
+			// 			options.leave = function() { $bg.removeClass('active'); };
+			//
+			// 		}
+			// 		else {
+			//
+			// 			$bg
+			// 				.css('opacity', 1)
+			// 				.hide();
+			//
+			// 			options.init = function() { $bg.fadeOut(0); };
+			// 			options.enter = function() { $bg.fadeIn(400); };
+			// 			options.leave = function() { $bg.fadeOut(400); };
+			//
+			// 		}
+			//
+			// 		$this.scrollex(options);
+			//
+			// });
 
 	});
 

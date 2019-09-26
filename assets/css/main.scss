@@ -6,6 +6,8 @@
 @import 'libs/mixins';
 @import 'fa/fontawesome.scss';
 @import 'fa/solid.scss';
+@import 'libs/slick.scss';
+@import 'libs/slick-theme.scss';
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,400italic,700,800");
 
 /*
@@ -28,12 +30,12 @@
 		boxModel: 'border',
 		grid: ( gutters: 1.5em ),
 		conditionals: true,
-		containers: 45em,
+		containers: 100%,
 		breakpoints: (
 			large: (
 			),
 			medium: (
-				containers: 80%,
+				containers: 100%,
 			),
 			small: (
 				grid: (
@@ -59,8 +61,8 @@
 	html {
 		background-color:		_palette(accent2, bg);
 		background-attachment:	fixed,						fixed;
-		background-image:		url('images/overlay.png'),	url('../../assets/images/bg.jpg');
-		background-position:	top left,					center center;
+		background-image:		url('images/overlay.png'),	url('../../assets/images/bg03.jpg');
+		background-position:	top left,					top center;
 		background-repeat:		repeat,						none;
 		background-size:		auto,						cover;
 	}
@@ -212,6 +214,35 @@
 			line-height: 1.75em;
 			padding: 1em 1.5em;
 			overflow-x: auto;
+		}
+	}
+
+	nav {
+		background: _palette(bg);
+		height: 3em;
+		padding-top: .75em;
+		z-index: 999;
+		box-shadow: inset 0 0 0 1px #dddddd;
+
+		ul {
+			margin: 0;
+			padding: 0;
+			li {
+				display: table-cell;
+				padding-left: 1em;
+			}
+		}
+
+		.nav-container {
+			max-width: 600px;
+			margin-right: auto;
+			margin-left: auto;
+		}
+	}
+
+	.monogram {
+		img {
+			width: 300px;
 		}
 	}
 
@@ -1029,11 +1060,11 @@
 
 		.container {
 			@include padding($size-padding-tb, $size-padding-lr, (0, 0, 5em, 0));
-			background: transparentize(_palette(bg), 0.05);
+			background: _palette(bg);//transparentize(_palette(bg), 0.05);
 			box-shadow: inset 0 1px 0 0 _palette(border);
 
 			&:before {
-				@include minHeight($size-padding-tb, 5em);
+				//@include minHeight($size-padding-tb, 5em);
 				content: '';
 				display: inline-block;
 				vertical-align: middle;
@@ -1110,8 +1141,10 @@
 		header {
 			color: _palette(alt, fg);
 			display: inline-block;
-			padding-bottom: (_size(element-height) + ($size-padding-lr * 2));
-			vertical-align: middle;
+			//padding-bottom: (_size(element-height) + ($size-padding-lr * 2));
+			vertical-align: top;
+			margin-top: 57vh;
+			width: 90%;
 
 			h1, h2, h3, h4, h5, h6, strong, b {
 				color: _palette(alt, fg-bold);
@@ -1149,8 +1182,6 @@
 		.container {
 			background: transparentize(_palette(bg), 0.05);
 			bottom: 0;
-			left: 50%;
-			margin-left: -22.5em;
 			padding: $size-padding-lr;
 			position: absolute;
 
@@ -1265,8 +1296,8 @@
 
 			#header {
 				header {
-					padding-bottom: (_size(element-height) + ($size-padding-lr * 2));
-					width: 80%;
+					//padding-bottom: (_size(element-height) + ($size-padding-lr * 2));
+					width: 90%;
 				}
 
 				.container {
@@ -1333,7 +1364,8 @@
 				}
 
 				header {
-					padding-bottom: 15em;
+					//padding-bottom: 15em;
+					margin-top: 30vh;
 
 					h1 {
 						font-size: 2em;
@@ -1466,9 +1498,9 @@
 
 		/* Header */
 			#header {
-				header {
-					padding-bottom: 20em;
-				}
+				// header {
+				// 	padding-bottom: 20em;
+				// }
 
 				.container {
 					display: none;
@@ -1517,4 +1549,64 @@
 		background-image:none !important;
 		-o-animation: fadeIt 1s ease-in-out;
 		animation: fadeIt 1s ease-in-out;
+	}
+
+	.hr-sect {
+		display: flex;
+		flex-basis: 100%;
+		align-items: center;
+		color: _palette(bg);
+		margin: 8px 0;
+	}
+
+	.hr-sect::before,
+	.hr-sect::after {
+		content: "";
+		flex-grow: 1;
+		background: _palette(bg);
+		height: 2px;
+		font-size: 0px;
+		line-height: 0px;
+		margin: 0px 8px;
+	}
+
+	.wedding-date {
+		font-size: 2em
+	}
+
+	.image-carousel {
+		img {
+			width: 100%;
+		}
+	}
+	//slick.js
+	.slick-slider.slick-dotted {
+
+		margin-bottom: 29px;
+
+		button {
+			box-shadow: none;
+		}
+
+		.slick-next {
+			right: 50px;
+
+			&:before {
+				font-size: 60px;
+			}
+		}
+
+		.slick-prev {
+			left: 50px;
+			z-index: 999;
+
+			&:before {
+				font-size: 60px;
+			}
+		}
+
+		.slick-dots {
+			bottom: -29px;
+			background: _palette(bg);
+		}
 	}
