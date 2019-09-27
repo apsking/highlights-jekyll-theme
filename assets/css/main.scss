@@ -1389,6 +1389,19 @@
 				}
 			}
 
+		.container .bio-portrait {
+
+			&.right {
+				float: none;
+				margin-left: 0;
+			}
+
+			&.left {
+				float: none;
+				margin-right: 0;
+			}
+		}
+
 	}
 
 /* XSmall */
@@ -1574,6 +1587,25 @@
 			width: 100%;
 		}
 	}
+
+	.bio-portrait {
+		max-width: 300px;
+		width: 100%;
+		border-radius: 150px;
+		-webkit-shape-outside:circle();
+		shape-outside:circle();
+
+		&.right {
+			float: right;
+			margin-left: 3em;
+		}
+
+		&.left {
+			float: left;
+			margin-right: 3em;
+		}
+	}
+
 	//slick.js
 	.slick-slider.slick-dotted {
 
