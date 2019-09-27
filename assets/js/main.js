@@ -19,26 +19,27 @@
 			$body = $('body'),
 			$html = $('html');
 
-			// //Sticky header
-			// $window.scroll(function() {
-			// 	var header = $(document).scrollTop();
-			// 	var headerHeight = 510;// $("#intro").outerHeight() + $("#navigation").outerHeight();
-			// 	console.log(`header: ${header}, headerHeight: ${headerHeight}`)
-			// 	if (header > headerHeight) {
-			//     	$("#navigation").addClass("fixed");
-			// 	} else {
-			//     	$("#navigation").removeClass("fixed");
-			// 	}
-			// });
+			//Enable sticky header
 			stickybits('#navigation');
 
+			//Enable Image carousel
 			$('.image-carousel').slick({
 			    dots: true,
 				adaptiveHeight: true,
 				autoplay: true,
 				autoplaySpeed: 7000,
-				//prevArrow: '<span class="fas fa-3x fa-mug-hot"></span>',
-				//nextArrow: '<span class="fas fa-3x fa-mug-hot"></span>',
+			});
+
+			//Add form validation
+			$('#rsvp-form').on('submit', function() {
+				const eatHoney = Array.from(document.getElementsByClassName('awesome'))
+					.filter(item => item.value != '')
+					.length > 0;
+
+				if (eatHoney) {
+					location.reload();
+					return false;
+				}
 			});
 
 		// //Countdown timer

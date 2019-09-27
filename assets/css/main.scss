@@ -227,16 +227,11 @@
 		ul {
 			margin: 0;
 			padding: 0;
+			list-style-position: inside;
+			text-align: center;
 			li {
-				display: table-cell;
-				padding-left: 1em;
+				display: inline-block;
 			}
-		}
-
-		.nav-container {
-			max-width: 600px;
-			margin-right: auto;
-			margin-left: auto;
 		}
 	}
 
@@ -1597,7 +1592,7 @@
 		}
 
 		.slick-prev {
-			left: 50px;
+			left: 15px;
 			z-index: 999;
 
 			&:before {
@@ -1609,4 +1604,15 @@
 			bottom: -29px;
 			background: _palette(bg);
 		}
+	}
+
+	//Honeypot
+	.awesome {
+		opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 0;
+        width: 0;
+        z-index: -1;
 	}
