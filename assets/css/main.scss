@@ -219,9 +219,8 @@
 
 	nav {
 		background: _palette(bg);
-		height: 3em;
-		padding-top: .75em;
-		z-index: 999;
+		min-height: 3em;
+		z-index: 1000;
 		box-shadow: inset 0 0 0 1px #dddddd;
 
 		ul {
@@ -231,7 +230,36 @@
 			text-align: center;
 			li {
 				display: inline-block;
+				cursor: pointer;
 			}
+		}
+
+		.nav-toggle {
+			padding: 1em 0.5em 0.5em 1.5em;
+			cursor: pointer;
+			display: none;
+
+			.icon-close {
+				display: none;
+			}
+
+			.icon-open {
+				display: block;
+			}
+
+			&.open {
+				.icon-close {
+					display: block;
+				}
+
+				.icon-open {
+					display: none;
+				}
+			}
+		}
+
+		.nav-list {
+			padding-top: 0.5em;
 		}
 	}
 
@@ -1347,6 +1375,37 @@
 					.flip-card-inner {
 						border-width: 0;
 					}
+				}
+			}
+		}
+
+		nav {
+			ul {
+				text-align: left;
+
+				li {
+					display: block;
+					padding: 0.5em 0 0.5em 1.5em;
+
+					&:hover {
+						background: _palette(accent1, fg);
+					}
+				}
+			}
+
+			.nav-toggle {
+				display: block;
+			}
+
+			.nav-list {
+				height: 0;
+				overflow: hidden;
+				padding-top: 0;
+
+				transition: height 0.5s ease;
+
+				&.open {
+					height: 190px;
 				}
 			}
 		}

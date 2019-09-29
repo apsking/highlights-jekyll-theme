@@ -52,6 +52,28 @@
 				}
 			})
 
+			$('.nav-toggle').on('click', function() {
+				const $navList = $('.nav-list');
+				const $this = $(this);
+
+				if ($navList.hasClass('open')) {
+					$navList.removeClass('open');
+				} else {
+					$navList.addClass('open');
+				}
+
+				if ($this.hasClass('open')) {
+					$this.removeClass('open');
+				} else {
+					$this.addClass('open');
+				}
+			});
+
+			$('section, .nav-list li').on('click', function() {
+				$('.nav-list').removeClass('open');
+				$('.nav-toggle').removeClass('open');
+			});
+
 		// //Countdown timer
 		// var end = new Date('08/08/2020 4:00 PM');
 		//
