@@ -464,6 +464,7 @@
 	input[type="text"],
 	input[type="password"],
 	input[type="email"],
+	input[type="number"],
 	select,
 	textarea {
 		@include vendor('appearance', 'none');
@@ -511,6 +512,7 @@
 	}
 
 	input[type="text"],
+	input[type="number"],
 	input[type="password"],
 	input[type="email"],
 	select {
@@ -1747,5 +1749,43 @@
 
 		p {
 			text-align: center;
+		}
+	}
+
+	.hide {
+		display: none;
+	}
+
+	.invisible {
+		visibility: hidden;
+	}
+
+	.form-validation-msg {
+		color: #ffa500;
+		font-size: 12px;
+	}
+
+	.form-success-icon {
+		color: _palette(accent1, bg);
+	}
+
+	.form-input {
+		text-align: left;
+	}
+
+	.form-overlay {
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		position: absolute;
+		background: rgba(144, 144, 144, 0.5);
+
+		.spinner {
+			margin: 6em;
+			animation-name: spinner-rotate;
+	  		animation-duration: 1500ms;
+		  	animation-iteration-count: infinite;
+		  	animation-timing-function: linear;
 		}
 	}

@@ -286,29 +286,44 @@
 					<a href="#header" class="scrolly goto-home" title="To Top"></a>
 				</h2>
 			</header>
-			<form action="https://formspree.io/{{ site.email }}" method="POST" id="rsvp-form">
+			<div class="rsvp-error hide">
+				<h3>Woops! Something went wrong. Try again to make sure that we get your RSVP!</h3>
+			</div>
+			<form action="https://script.google.com/macros/s/AKfycbwhE1PU3mnKGYSBRqaGQYiimwmo6S3GJjFKDRMyRezFzqIO6j8/exec" method="POST" id="rsvp-form" class="rsvp-form gform">
+				<div class="form-overlay hide">
+					<i class="spinner fas fa-3x fa-spinner"></i>
+				</div>
 				<div class="row uniform">
-					<div class="6u 12u$(xsmall)"><input type="text" name="rsvp_n" id="rsvp_n" placeholder="Name" /></div>
-					<div class="6u$ 12u$(xsmall)"><input type="email" name="_replyto" id="rsvp_email" placeholder="Email" /></div>
-					<div class="6u 12u$(xsmall)"><input type="text" name="rsvp_p" id="rsvp_p" placeholder="Passphrase (Check your invite!)" /></div>
-					<div class="6u$ 12u$(xsmall)">
-						<select>
-							<option value="" selected disabled hidden>Bringing anyone?</option>
-							<option value="1">Nope, flying solo</option>
-							<option value="2">Yeah, bringing my date!</option>
-						</select>
+					<div class="6u 12u$(xsmall) form-input">
+						<input type="text" name="rsvp_name" id="rsvp_n" placeholder="Name" class="required" />
+						<span class="form-validation-msg invisible">Name is required.</span>
 					</div>
-					<div class="12u$"><textarea name="rsvp_m" id="rsvp_m" placeholder="Anything else we should know? RSVPing for a whole family? Questions? Pro Tips?" rows="4"></textarea></div>
+					<div class="6u$ 12u$(xsmall) form-input">
+						<input type="email" name="rsvp_email" id="rsvp_email" placeholder="Email" class="required" />
+						<span class="form-validation-msg invisible">Email is required.</span>
+					</div>
+					<div class="6u 12u$(xsmall) form-input">
+						<input type="text" name="rsvp_passphrase" id="rsvp_passphrase" placeholder="Passphrase (Check your invite!)" class="required" />
+						<span class="form-validation-msg invisible">Passphrase is required.</span>
+					</div>
+					<div class="6u 12u$(xsmall) form-input">
+						<input type="number" name="rsvp_count" id="rsvp_count" min=1 max=10 placeholder="Number in your Party" class="required"/>
+						<span class="form-validation-msg invisible">Number in Party is required.</span>
+					</div>
+					<div class="12u$">
+						<textarea name="rsvp_message" id="rsvp_message" placeholder="Anything else we should know? RSVPing for a whole family? Questions? Pro Tips?" rows="4"></textarea></div>
 				    <input class="awesome" autocomplete="off" type="text" name="name" placeholder="Your name here">
-				    <input class="awesome" autocomplete="off" type="email" name="email" placeholder="Your e-mail here">
 					<div class="12u$">
 						<ul class="actions">
-							<input type="hidden" name="_subject" id="email-subject" value="RSVP">
 							<li><input type="submit" value="Send Message" class="special" /></li>
 						</ul>
 					</div>
 				</div>
 			</form>
+			<div class="rsvp-thanks hide">
+				<i class="form-success-icon fas fa-check fa-6x"></i>
+				<h3>Thanks for your RSVP! We can't wait to celebrate with you!</h3>
+			</div>
 		</div>
 	</div>
 </section>
