@@ -22,21 +22,6 @@
 			//Enable sticky header
 			stickybits('#navigation');
 
-			// Hide navbar when scrolling down. Show on up-scroll
-			var prevScrollpos = window.pageYOffset;
-			$window.on('scroll', function() {
-				var currentScrollPos = window.pageYOffset;
-				const nav = document.getElementById("navigation");
-				if (nav && !$('.nav-toggle').hasClass('open')) {
-					if (prevScrollpos > currentScrollPos) {
-				    	nav.style.top = '0px'
-				    } else {
-				    	nav.style.top = '-50px'
-				    }
-				    prevScrollpos = currentScrollPos;
-				}
-			});
-
 			//Enable Image carousel
 			$('.image-carousel').slick({
 			    dots: true,
