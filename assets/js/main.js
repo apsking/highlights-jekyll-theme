@@ -65,6 +65,12 @@
 				$('.nav-toggle').removeClass('open');
 			});
 
+			$('.rsvp-already-completed').on('click', function(){
+				initGame();
+				$('.rsvp-form').addClass('hide');
+				$('.rsvp-thanks').removeClass('hide');
+			});
+
 			//Countdown timer
 			var end = new Date('08/08/2020 4:00 PM');
 
