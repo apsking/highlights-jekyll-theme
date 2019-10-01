@@ -8,6 +8,7 @@
 @import 'fa/solid.scss';
 @import 'libs/slick.scss';
 @import 'libs/slick-theme.scss';
+@import 'blockrain.css';
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,400italic,700,800");
 
 /*
@@ -1213,10 +1214,13 @@
 
 		/* Basic */
 
-			body, input, select, textarea {
-				font-size: 12pt;
-			}
+		body, input, select, textarea {
+			font-size: 12pt;
+		}
 
+		.rsvp-thanks .small {
+			display: none;
+		}
 	}
 
 /* Medium */
@@ -1280,6 +1284,9 @@
 				}
 			}
 
+			.rsvp-thanks .small {
+				display: none;
+			}
 	}
 
 /* Small */
@@ -1411,6 +1418,16 @@
 				}
 			}
 		}
+
+		.rsvp-thanks {
+			.large {
+			   display: none;
+		   }
+
+		   .small {
+			   display: block;
+		   }
+		}
 	}
 
 /* XSmall */
@@ -1537,6 +1554,15 @@
 					}
 				}
 			}
+		.rsvp-thanks {
+			.large {
+			   display: none;
+		   }
+
+		   .small {
+			   display: block;
+		   }
+		}
 	}
 
 /* Small height viewport*/
@@ -1787,5 +1813,17 @@
 	  		animation-duration: 1500ms;
 		  	animation-iteration-count: infinite;
 		  	animation-timing-function: linear;
+		}
+	}
+
+	.game {
+		width: 300px;
+		height: 500px;
+		//width: 100%;
+		margin-right: auto;
+		margin-left: auto;
+
+		.blockrain-btn {
+			border-bottom-color: #FFF !important;
 		}
 	}

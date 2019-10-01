@@ -292,6 +292,7 @@
 				if (xhr.status === 200) {
 				    form.reset();
 
+					initGame();
 					$('.rsvp-form').addClass('hide');
 					$('.rsvp-thanks').removeClass('hide');
 				} else {
@@ -372,6 +373,13 @@
 		formData.formGoogleSheetName = form.dataset.sheet || "responses"; // default sheet name
 
 		return {data: formData, honeypot: honeypot};
+	}
+
+	function initGame() {
+		$('.game').blockrain({
+			theme: 'vim',
+			playText: 'Let\'s play some Tetris. Use your arrow keys!',
+		});
 	}
 
 })(jQuery);
