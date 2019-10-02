@@ -62,6 +62,7 @@
 
 			$('.complete-overlay-close').on('click', function() {
 				$('.complete-overlay').addClass('hide');
+				$('#wrapper').removeClass('freeze');
 
 				if (window.matterEngine) {
 					Matter.World.clear(window.matterEngine.world);
@@ -257,10 +258,12 @@
 
 		$('.score').on('click', function() {
 			$('.scoreboard-overlay').removeClass('hide');
+			$('#wrapper').addClass('freeze');
 		});
 
 		$('.scoreboard-close').on('click', function() {
 			$('.scoreboard-overlay').addClass('hide');
+			$('#wrapper').removeClass('freeze');
 		});
 
 		var photoArrowCount = 0;
