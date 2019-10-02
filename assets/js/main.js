@@ -60,6 +60,17 @@
 				}
 			});
 
+			$('.complete-overlay-close').on('click', function() {
+				$('.complete-overlay').addClass('hide');
+
+				if (window.matterEngine) {
+					Matter.World.clear(window.matterEngine.world);
+        			Matter.Engine.clear(window.matterEngine);
+					$('.complete-overlay canvas').remove();
+					delete window.matterEngine;
+				}
+			});
+
 			$('section, .nav-list li').on('click', function() {
 				$('.nav-list').removeClass('open');
 				$('.nav-toggle').removeClass('open');
@@ -128,6 +139,176 @@
 		    }
 
 		    timer = setInterval(showRemaining, 1000);
+
+		//Discover Game state
+		window.gameState = {
+			achievements: {
+				bottomScroll: {
+					completed: false,
+					message: 'Deep Down Explorer',
+					icon: 'fa-sort-amount-down-alt'
+				},
+				pics: {
+					completed: false,
+					message: 'Picture Perfect',
+					icon: 'fa-camera'
+				},
+				tetris: {
+					completed: false,
+					message: 'Tetris Champ',
+					icon: 'fa-shapes'
+				},
+				weather: {
+					completed: false,
+					message: 'Rainman',
+					icon: 'fa-cloud-sun-rain'
+				},
+				flipper: {
+					completed: false,
+					message: 'Flipper',
+					icon: 'fa-sync-alt'
+				},
+				carpet: {
+					completed: false,
+					message: 'Hipster Icon',
+					icon: 'fa-glasses'
+				},
+				puppy: {
+					completed: false,
+					message: 'Puppy Can\'t Hang',
+					icon: 'fa-paw'
+				},
+				cedarvale: {
+					completed: false,
+					message: 'I Know Where I\'m Going',
+					icon: 'fa-tree'
+				},
+				// welcome: {
+				// 	completed: false,
+				// 	message: 'You Showed Up!',
+				// 	icon: 'fa-eye'
+				// },
+				// challenge10: {
+				// 	completed: false,
+				// 	message: 'Challenge 10',
+				// }
+			},
+			score: 0,
+			achievementCompleted: function(achievementId) {
+				const achievement = window.gameState.achievements[achievementId];
+
+				if (!achievement) {
+					return false;
+				}
+
+				if (!achievement.completed) {
+					achievement.completed = true;
+					const itemsCompleted = Object.keys(window.gameState.achievements)
+						.filter(key => window.gameState.achievements[key].completed).length;
+					const totalItems = Object.keys(window.gameState.achievements).length;
+					window.gameState.score = Math.min(100, Math.ceil(itemsCompleted / totalItems * 100) );
+
+					Toastify({
+					  text: `Achievement Completed: ${achievement.message}`,
+					  backgroundColor: "#8cd1a8",
+					  className: "info",
+					  duration: 3000,
+					  gravity: 'bottom',
+					  close: true,
+					  stopOnFocus: true
+					}).showToast();
+
+					window.gameState.updateScoreboard();
+
+					if (Object.keys(window.gameState.achievements)
+						.every(key => window.gameState.achievements[key].completed)) {
+							window.gameState.gameWon();
+						}
+				}
+			},
+			gameWon: function() {
+				$('.complete-overlay').removeClass('hide');
+				popcorn();
+				Toastify({
+				  text: `You won! Enjoy some of our favorite snack!`,
+				  backgroundColor: "#8cd1a8",
+				  className: "info",
+				  duration: 10000,
+				  gravity: 'bottom',
+				  close: true,
+				  stopOnFocus: true
+				}).showToast();
+
+				$('.scoreboard-progess-msg').addClass('hide');
+				$('.scoreboard-complete-msg').removeClass('hide');
+			},
+			updateScoreboard: function() {
+				$('.score-value').text(window.gameState.score);
+
+				const updatedListItems = Object.keys(window.gameState.achievements)
+					.map(key => window.gameState.achievements[key])
+					.map(achievement => {
+						return `<li class="score-item ${achievement.completed ? 'complete' : ''}"><i class="major fas fa-md ${achievement.icon}"></i> ${achievement.message}</li>`
+					});
+				$('.score-list').html(updatedListItems);
+			}
+		};
+		window.gameState.updateScoreboard();
+
+		$('.score').on('click', function() {
+			$('.scoreboard-overlay').removeClass('hide');
+		});
+
+		$('.scoreboard-close').on('click', function() {
+			$('.scoreboard-overlay').addClass('hide');
+		});
+
+		var photoArrowCount = 0;
+		$('.slick-arrow').on('click', function() {
+			photoArrowCount++;
+			if (photoArrowCount === 5) {
+				window.gameState.achievementCompleted('pics');
+			}
+		});
+
+		$('.pdx-carpet').on('click', function() {
+			window.gameState.achievementCompleted('carpet');
+		});
+
+		$('.puppy-link').on('click', function() {
+			window.gameState.achievementCompleted('puppy');
+		});
+
+		$('.weather-overlay').on('click', function() {
+			window.gameState.achievementCompleted('weather');
+		});
+
+		$('.cedarvale-link').on('click', function() {
+			window.gameState.achievementCompleted('cedarvale');
+		});
+
+		setTimeout(function() {
+			window.gameState.achievementCompleted('welcome');
+		}, 3000);
+
+		var flipCount = {};
+		$('.flip-toggle').on('click', function() {
+			flipCount[$(this).attr('data-id')] = 1;
+			if (Object.keys(flipCount).length === 4) {
+				window.gameState.achievementCompleted('flipper');
+			}
+		});
+
+		// Game events
+		$window.scroll(function() {
+		    if ($window.scrollTop() + $window.height() == $(document).height()) {
+		       window.gameState.achievementCompleted('bottomScroll');
+		    }
+
+			if ($window.scrollTop() > $window.height()) {
+				window.gameState.achievementCompleted('welcome');
+			}
+		});
 
 		// Disable animations/transitions until the page has loaded.
 			$html.addClass('is-loading');
@@ -385,8 +566,74 @@
 		$('.game').blockrain({
 			theme: 'vim',
 			playText: 'Let\'s play some Tetris. Use your arrow keys!',
+			onLine: function(lines, scoreIncrement, score) {
+				window.gameState.achievementCompleted('tetris');
+			}
 		});
 	}
+
+	function popcorn() {
+		// module aliases
+		var Engine = Matter.Engine,
+		    Render = Matter.Render,
+		    World = Matter.World,
+		    Bodies = Matter.Bodies;
+
+		// create an engine
+		var engine = Engine.create();
+
+		// create a renderer
+		var width = $(window).width();
+		var height = $(window).height();
+		var render = Render.create({
+		    element: document.getElementById('falling-canvas'),
+		    engine: engine,
+			//canvas: document.getElementById('myCanvas')
+			options: {
+				width: width,
+				height: $(window).height(),
+				wireframes: false,
+    			background: 'rgba(0,0,0,0)'
+			}
+		});
+
+		// create two walls and a ground
+		var ground = Bodies.rectangle(400, 610, width + 500, 60, { isStatic: true });
+		var left = Bodies.rectangle(-60, 0, 60, height + 500, { isStatic: true });
+		var right = Bodies.rectangle(width+60, 0, 60, height + 500, { isStatic: true });
+
+		// add all of the bodies to the world
+		World.add(engine.world, [ground, right, left]);
+
+		var count = 0;
+		var int = setInterval(function(){
+			count++;
+			if (count > 300) {
+				clearInterval(int);
+				setTimeout(function(){
+					Render.stop(render);
+				}, 10000);
+			}
+			var body = Bodies.circle(Math.floor(Math.random() * Math.floor(width)) + 50, 0, 20, {
+				render: {
+                    sprite: {
+                        texture: './assets/images/popcorn.png'
+                    }
+                },
+				density: 0.1
+			});
+			engine.world = World.addBody(engine.world, body);
+		}, 30);
+
+		// run the engine
+		Engine.run(engine);
+
+		// run the renderer
+		Render.run(render);
+
+		window.matterEngine = engine;
+	}
+	//popcorn();
 
 })(jQuery);
 

@@ -1403,7 +1403,7 @@
 			}
 
 			.nav-toggle {
-				display: block;
+				display: inline-block;
 			}
 
 			.nav-list {
@@ -1821,6 +1821,88 @@
 		cursor: pointer;
 	}
 
+	.score {
+		float: right;
+	    background: #8cd1a8;
+	    width: 30px;
+	    height: 30px;
+	    border-radius: 15px;
+	    vertical-align: middle;
+	    text-align: center;
+	    padding-top: 0px;
+	    margin-top: 10px;
+	    margin-right: 10px;
+	    font-size: 12px;
+		cursor: pointer;
+		pointer-events: auto;
+		z-index: 1005;
+		color: #FFF;
+	}
+
+	.scoreboard-overlay {
+		position: fixed; /* Sit on top of the page content */
+		width: 100%; /* Full width (cover the whole page) */
+		height: 100%; /* Full height (cover the whole page) */
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: _palette(accent1, bg); /* Black background with opacity */
+		z-index: 1000; /* Specify a stack order in case you're using a different order for other elements */
+		padding: 3em;
+
+		p, h2 {
+			color: #FFF;
+		}
+
+		.score-list {
+			color: #FFF;
+		}
+
+		.score-item {
+
+			list-style-type: none;
+
+			&.complete {
+				text-decoration: line-through;
+			}
+		}
+
+		.scoreboard-close {
+			color: #FFF;
+			cursor: pointer;
+			&:hover {
+				color: #FFF !important;
+			}
+		}
+	}
+
+	.complete-overlay {
+		position: fixed; /* Sit on top of the page content */
+		width: 100%; /* Full width (cover the whole page) */
+		height: 100%; /* Full height (cover the whole page) */
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		//background-color: _palette(accent1, bg); /* Black background with opacity */
+		z-index: 1000;
+	}
+
+	.complete-overlay-close {
+		float: right;
+		margin-right: 10px;
+		margin-top: 10px;
+		background-color: _palette(accent1, bg);
+		border-radius: 15px;
+		width: 30px;
+		height: 30px;
+		text-align: center;
+		padding-top: 4px;
+		color: #FFF;
+		cursor: pointer;
+	}
+
 	.game {
 		width: 300px;
 		height: 500px;
@@ -1831,4 +1913,17 @@
 		.blockrain-btn {
 			border-bottom-color: #FFF !important;
 		}
+	}
+
+	.weather-wrapper {
+		position: relative;
+	}
+
+	.weather-overlay {
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: 999;
 	}

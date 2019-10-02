@@ -11,6 +11,9 @@
 
 <nav id="navigation">
 	<div class="nav-container">
+		<div class="score" title="Scoreboard">
+			<span class="score-value">0</span><span>%</span>
+		</div>
 		<div class="nav-toggle">
 			<i class="icon-close fas fa-times fa-lg"></i>
 			<i class="icon-open fas fa-bars fa-lg"></i>
@@ -34,6 +37,25 @@
 		</div>
 	</div>
 </nav>
+
+<div class="scoreboard-overlay hide">
+	<h2>Scoreboard</h2>
+	<p>
+		There are some secrets hidden all throughout this site.
+		<span class="scoreboard-progess-msg">See if you can find them all!</span>
+		<span class="scoreboard-complete-msg hide">Congratulations! You found them all!</span>
+	</p>
+	<ul class="score-list"></ul>
+
+	<a class="scoreboard-close">Close</a>
+</div>
+
+<div id='falling-canvas' class="complete-overlay hide">
+	<div class="complete-overlay-close">
+		<i class="fa fa-times fa-lg "></i>
+	</div>
+</div>
+
 <!-- One -->
 <section id="intro" class="main special">
 	<div class="container">
@@ -114,7 +136,7 @@
 							</div>
 							<h3>Welcome Party</h3>
 							<p>Friday, 7pm</p>
-							<div class="flip-toggle">
+							<div class="flip-toggle" data-id="welcome">
 								<a>See more</a>
 							</div>
 				    	</div>
@@ -138,7 +160,7 @@
 							</div>
 							<h3>Ceremony</h3>
 							<p>Saturday, 4pm</p>
-							<div class="flip-toggle">
+							<div class="flip-toggle" data-id="ceremony">
 								<a>See more</a>
 							</div>
 				    	</div>
@@ -162,7 +184,7 @@
 							</div>
 							<h3>Reception</h3>
 							<p>Saturday, 5pm</p>
-							<div class="flip-toggle">
+							<div class="flip-toggle" data-id="reception">
 								<a>See more</a>
 							</div>
 				    	</div>
@@ -186,7 +208,7 @@
 							</div>
 							<h3>Farewell</h3>
 							<p>Sunday, 10am</p>
-							<div class="flip-toggle">
+							<div class="flip-toggle" data-id="farewell">
 								<a>See more</a>
 							</div>
 				    	</div>
@@ -221,7 +243,7 @@
 			<p>
 				Tucked away in the Oregon's Williamette valley, we are getting
 				married in the tree-lined woodlands at
-				<a href="https://www.cedarvaleevents.com/" target="_blank">CedarVale!</a>
+				<a href="https://www.cedarvaleevents.com/" target="_blank" class="cedarvale-link">CedarVale!</a>
 				When we first arrived at this venue, we immediately felt relaxed
 				in its towering cedar trees and beautiful scenery. We are excited
 				to welcome you to the Pacific Northwest and share this wonderful
@@ -229,7 +251,7 @@
 			</p>
 			<h3>Airport</h3>
 			<p>
-				Famous for its <a href="https://www.instagram.com/thepdxproject/">iconic carpet</a>,
+				Famous for its <a href="https://www.instagram.com/thepdxproject/" target="_blank" class="pdx-carpet">iconic carpet</a>,
 				the nearest airport is
 				<a href="https://www.flypdx.com" target="_blank">Portland International Airport (PDX).</a>
 				As Oregon's biggest airport, it should have plenty of options
@@ -273,8 +295,13 @@
 					<a href="#header" class="scrolly goto-home" title="To Top"></a>
 				</h2>
 			</header>
-			<div>
-				<a class="weatherwidget-io" href="https://forecast7.com/en/45d18n122d81/hubbard/?unit=us" data-label_1="CedarVale" data-label_2="Hubbard, OR" data-theme="original" data-basecolor="#8cd1a8" data-highcolor="#fb884f" data-lowcolor="#ffffff" data-raincolor="#1b4887" >CedarVale Hubbard, OR</a>
+			<div class="weather-wrapper">
+				<a href="https://www.accuweather.com/en/us/hubbard/97032/weather-forecast/340196" target="_blank">
+					<div class="weather-overlay"></div>
+				</a>
+				<div>
+					<a class="weatherwidget-io" href="https://forecast7.com/en/45d18n122d81/hubbard/?unit=us" data-label_1="CedarVale" data-label_2="Hubbard, OR" data-theme="original" data-basecolor="#8cd1a8" data-highcolor="#fb884f" data-lowcolor="#ffffff" data-raincolor="#1b4887" >CedarVale Hubbard, OR</a>
+				</div>
 			</div>
 		</div>
 	</div>
