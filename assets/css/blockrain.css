@@ -32,14 +32,14 @@
 }
 
 .blockrain-touch-left {
-  left: -60px;
+  left: -50px;
   bottom: 10px;
 }
 .blockrain-touch-left::after {
   content: "<";
 }
 .blockrain-touch-right {
-  right: -60px;
+  right: -50px;
   bottom: 10px;
 }
 .blockrain-touch-right::after {
@@ -47,7 +47,7 @@
 }
 
 .blockrain-touch-rotate-left {
-  left: -60px;
+  left: -50px;
   bottom: 80px;
 }
 .blockrain-touch-rotate-left::after {
@@ -55,7 +55,7 @@
 }
 
 .blockrain-touch-rotate-right {
-  right: -60px;
+  right: -50px;
   bottom: 80px;
 }
 .blockrain-touch-rotate-right::after {
