@@ -573,8 +573,6 @@
 				window.gameState.achievementCompleted('tetris');
 			}
 		});
-
-		$('.game').blockrain('touchControls', true);
 	}
 
 	function popcorn() {
