@@ -88,10 +88,6 @@
 				-webkit-transform: translate3d(0,0,0);
 				height: 100vh;
 				overflow: auto;
-
-				&.freeze {
-					overflow: hidden;
-				}
 			}
 		}
 	}
@@ -1423,15 +1419,15 @@
 			}
 		}
 
-		// .rsvp-thanks {
-		// 	.large {
-		// 	   display: none;
-		//    }
-		//
-		//    .small {
-		// 	   display: block;
-		//    }
-		// }
+		.rsvp-thanks {
+			.large {
+			   display: none;
+		   }
+
+		   .small {
+			   display: block;
+		   }
+		}
 
 		// .score, .toastify, .scoreboard-overlay, .complete-overlay {
 		// 	display: none !important;
@@ -1562,15 +1558,15 @@
 					}
 				}
 			}
-		// .rsvp-thanks {
-		// 	.large {
-		// 	   display: none;
-		//    }
-		//
-		//    .small {
-		// 	   display: block;
-		//    }
-		// }
+		.rsvp-thanks {
+			.large {
+			   display: none;
+		   }
+
+		   .small {
+			   display: block;
+		   }
+		}
 
 		// .score, .toastify, .scoreboard-overlay, .complete-overlay {
 		// 	display: none !important;
