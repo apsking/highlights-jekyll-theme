@@ -209,12 +209,11 @@
 					window.gameState.score = Math.min(100, Math.ceil(itemsCompleted / totalItems * 100) );
 
 					Toastify({
-					  text: `Achievement Completed: ${achievement.message}`,
+					  text: formatAchievmentText(achievement.message),
 					  backgroundColor: "#8cd1a8",
 					  className: "info",
-					  duration: 3000,
+					  duration: 6000,
 					  gravity: 'bottom',
-					  close: true,
 					  stopOnFocus: true
 					}).showToast();
 
@@ -235,7 +234,6 @@
 				  className: "info",
 				  duration: 10000,
 				  gravity: 'bottom',
-				  close: true,
 				  stopOnFocus: true
 				}).showToast();
 
@@ -256,6 +254,10 @@
 		window.gameState.updateScoreboard();
 
 		$('.score').on('click', function() {
+			$('.scoreboard-overlay').removeClass('hide');
+		});
+
+		$('body').on('click', '.achieve-toast', function() {
 			$('.scoreboard-overlay').removeClass('hide');
 		});
 
@@ -633,7 +635,10 @@
 
 		window.matterEngine = engine;
 	}
-	//popcorn();
+
+	function formatAchievmentText(name) {
+		return `<div class="achieve-toast" title="Open Scoreboard"><h4>Completed: ${name}</h4><span>See More...</span></div>`;
+	}
 
 })(jQuery);
 
