@@ -145,43 +145,64 @@
 			achievements: {
 				bottomScroll: {
 					completed: false,
-					message: 'Deep Down Explorer',
-					icon: 'fa-sort-amount-down-alt'
+					title: 'Deep Down Explorer',
+					icon: 'fa-sort-amount-down-alt',
+					tip: 'Scroll down to the deep dark depths. ' +
+						'Make sure to check things out along the way!'
 				},
 				pics: {
 					completed: false,
-					message: 'Picture Perfect',
-					icon: 'fa-camera'
+					title: 'Picture Perfect',
+					icon: 'fa-camera',
+					tip: 'We have lots of photos to share with you. ' +
+						'Click through and check out our favorites!'
 				},
 				tetris: {
 					completed: false,
-					message: 'Tetris Champ',
-					icon: 'fa-shapes'
+					title: 'Tetris Champ',
+					icon: 'fa-shapes',
+					tip: 'We are going old school. After you RSVP, ' +
+						'test your skills by getting on the scoreboard! ' +
+						'If you already RSVP\'d, no need to send another!'
 				},
 				weather: {
 					completed: false,
-					message: 'Rainman',
-					icon: 'fa-cloud-sun-rain'
+					title: 'Rainman',
+					icon: 'fa-cloud-sun-rain',
+					tip: 'Not sure what to wear? The weather in the PNW ' +
+						'is beautiful, but can be unpredictable. Check it out ' +
+						'before you go!'
 				},
 				flipper: {
 					completed: false,
-					message: 'Flipper',
-					icon: 'fa-sync-alt'
+					title: 'Flipper',
+					icon: 'fa-sync-alt',
+					tip: 'We have lots on the schedule. Check out the cards ' +
+						'so you are up to speed before you go!'
 				},
 				carpet: {
 					completed: false,
-					message: 'Hipster Icon',
-					icon: 'fa-glasses'
+					title: 'Hipster Icon',
+					icon: 'fa-glasses',
+					tip: 'Portlanders are nearly as weird as the city itself. ' +
+						'Find just one of the things that has a cult following ' +
+						'in PDX.'
 				},
 				puppy: {
 					completed: false,
-					message: 'Puppy Can\'t Hang',
-					icon: 'fa-paw'
+					title: 'Puppy Can\'t Hang',
+					icon: 'fa-paw',
+					tip: 'We love all of our dogs so much! We also love it ' +
+						'when they just need a snooze. Check out our precious ' +
+						'Insta-famous pups!'
 				},
 				cedarvale: {
 					completed: false,
-					message: 'I Know Where I\'m Going',
-					icon: 'fa-tree'
+					title: 'I Know Where I\'m Going',
+					icon: 'fa-tree',
+					tip: 'We were so enamored with the Cedars that line our ' +
+						'wedding venue. We can\'t wait to share it with you. ' +
+						'Feel free to check it out before you go!'
 				},
 				// welcome: {
 				// 	completed: false,
@@ -209,7 +230,7 @@
 					window.gameState.score = Math.min(100, Math.ceil(itemsCompleted / totalItems * 100) );
 
 					Toastify({
-					  text: formatAchievmentText(achievement.message),
+					  text: formatAchievmentText(achievement.title),
 					  backgroundColor: "#8cd1a8",
 					  className: "info",
 					  duration: 6000,
@@ -244,9 +265,9 @@
 				$('.score-value').text(window.gameState.score);
 
 				const updatedListItems = Object.keys(window.gameState.achievements)
-					.map(key => window.gameState.achievements[key])
-					.map(achievement => {
-						return `<li class="score-item ${achievement.completed ? 'complete' : ''}"><i class="major fas fa-md ${achievement.icon}"></i> ${achievement.message}</li>`
+					.map(key => {
+						const achievement = window.gameState.achievements[key];
+						return `<li class="score-item ${achievement.completed ? 'complete' : ''}" data-id='${key}'><i class="major fas fa-md ${achievement.icon}"></i> ${achievement.title}</li>`
 					});
 				$('.score-list').html(updatedListItems);
 			}
@@ -263,6 +284,14 @@
 
 		$('.scoreboard-close').on('click', function() {
 			$('.scoreboard-overlay').addClass('hide');
+		});
+
+		$('.score-list').on('mouseover', '.score-item', function() {
+			const achievementId = $(this).attr('data-id');
+			const achievement = window.gameState.achievements[achievementId];
+			if (achievement.tip) {
+				$('.score-description').text(achievement.tip);
+			}
 		});
 
 		var photoArrowCount = 0;

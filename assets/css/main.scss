@@ -1870,6 +1870,11 @@
 		.score-item {
 
 			list-style-type: none;
+			cursor: pointer;
+
+			&:hover {
+				color: _palette(accent1, fg);
+			}
 
 			&.complete {
 				text-decoration: line-through;
@@ -1881,6 +1886,23 @@
 			cursor: pointer;
 			&:hover {
 				color: #FFF !important;
+			}
+		}
+
+		.scoreboard-body {
+			.left {
+				border-right: 2px _palette(border) solid;
+			}
+		}
+
+		.score-desc-bg {
+			position: absolute;
+			text-align: center;
+			width: inherit;
+			color: rgba(255,255,255,0.1);
+
+			i {
+				font-size: 16em;
 			}
 		}
 	}
@@ -1935,6 +1957,8 @@
 		position: absolute;
 		z-index: 999;
 	}
+
+
 
 	.achieve-toast {
 		text-align: right;

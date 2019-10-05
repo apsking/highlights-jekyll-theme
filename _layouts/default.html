@@ -40,12 +40,27 @@
 
 <div class="scoreboard-overlay hide">
 	<h2>Scavenger Hunt</h2>
+	<hr />
 	<p>
 		There are some secrets hidden all throughout this site.
 		<span class="scoreboard-progess-msg">See if you can find them all!</span>
 		<span class="scoreboard-complete-msg hide">Congratulations! You found them all!</span>
 	</p>
-	<ul class="score-list"></ul>
+	<div class="row scoreboard-body">
+		<div class="6u 12u$(xsmall) left">
+			<ul class="score-list"></ul>
+		</div>
+		<div class="6u 12u$(xsmall) right">
+			<div class="score-desc-bg">
+				<span>
+					<i class="fas fa-lightbulb"></i>
+				</span>
+			</div>
+			<p class="score-description">
+				Hover over the items for a hint!
+			</p>
+		</div>
+	</div>
 
 	<a class="scoreboard-close">Close</a>
 </div>
