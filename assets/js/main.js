@@ -266,8 +266,8 @@
 
 				const updatedListItems = Object.keys(window.gameState.achievements)
 					.map(key => ({
-						'key': key,
-						'achievement': window.gameState.achievements[key]
+						key: key,
+						achievement: window.gameState.achievements[key]
 					}))
 					.sort((a,b) => a.achievement.completed - b.achievement.completed)
 					.map(obj => {
