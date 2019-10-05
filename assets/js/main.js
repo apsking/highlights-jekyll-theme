@@ -265,8 +265,14 @@
 				$('.score-value').text(window.gameState.score);
 
 				const updatedListItems = Object.keys(window.gameState.achievements)
-					.map(key => {
-						const achievement = window.gameState.achievements[key];
+					.map(key => ({
+						'key': key,
+						'achievement': window.gameState.achievements[key]
+					}))
+					.sort((a,b) => a.achievement.completed - b.achievement.completed)
+					.map(obj => {
+						const achievement = obj.achievement;
+						const key = obj.key;
 						return `<li class="score-item ${achievement.completed ? 'complete' : ''}" data-id='${key}'><i class="major fas fa-md ${achievement.icon}"></i> ${achievement.title}</li>`
 					});
 				$('.score-list').html(updatedListItems);
