@@ -1,8 +1,8 @@
 # Site settings
 title: Kimberly and Alex Get Married
-email: 
+email:
 description: A website to celebrate the wedding of Kimberly Lowell an Alex King.
-baseurl: "/thekings" # the subpath of your site, e.g. /blog
+baseurl: "http://www.alexandkimberly.com/" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site
 icon_sizes: [32, 57, 76, 96]
 
