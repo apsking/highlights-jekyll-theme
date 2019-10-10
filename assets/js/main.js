@@ -330,9 +330,12 @@
 
 		var flipCount = {};
 		$('.flip-toggle').on('click', function() {
-			flipCount[$(this).attr('data-id')] = 1;
-			if (Object.keys(flipCount).length === 4) {
-				window.gameState.achievementCompleted('flipper');
+			const uniqueId = $(this).attr('data-id');
+			if (uniqueId) {
+				flipCount[uniqueId] = 1;
+				if (Object.keys(flipCount).length === 4) {
+					window.gameState.achievementCompleted('flipper');
+				}
 			}
 		});
 

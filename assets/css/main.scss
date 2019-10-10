@@ -1730,13 +1730,17 @@
 
 	  	/* Style the back side */
 	  	.flip-card-back {
-	  	  background-color: _palette(accent1, bg);
-	  	  //color: white;
-	  	  transform: rotateY(180deg);
+			background-color: _palette(accent1, bg);
+			color: #FFF;
+			transform: rotateY(180deg);
 	  	}
 
 		.flip-toggle {
 			cursor: pointer;
+			position: absolute;
+			top: 17em;
+			margin-left: -1em;
+			width: 100%;
 		}
 	}
 
@@ -1776,10 +1780,6 @@
 
 		.flip-card-front {
 			padding: 3em 1em 0 1em;
-
-			.flip-toggle {
-				padding-top: 4em;
-			}
 		}
 
 		.flip-card-back {
