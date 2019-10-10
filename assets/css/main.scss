@@ -1414,7 +1414,7 @@
 				transition: height 0.5s ease;
 
 				&.open {
-					height: 190px;
+					height: 220px;
 				}
 			}
 		}
@@ -1431,6 +1431,10 @@
 
 		.score, .toastify, .scoreboard-overlay, .complete-overlay {
 			display: none !important;
+		}
+
+		.rsvp-already-completed, .easter-eggs-faq {
+			display: none;
 		}
 	}
 
@@ -1570,6 +1574,10 @@
 
 		.score, .toastify, .scoreboard-overlay, .complete-overlay {
 			display: none !important;
+		}
+
+		.rsvp-already-completed, .easter-eggs-faq {
+			display: none;
 		}
 	}
 
