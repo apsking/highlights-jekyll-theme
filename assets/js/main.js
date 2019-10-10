@@ -19,9 +19,6 @@
 			$body = $('body'),
 			$html = $('html');
 
-			//Enable sticky header
-			stickybits('#navigation');
-
 			//Enable Image carousel
 			$('.image-carousel').slick({
 			    dots: true,
