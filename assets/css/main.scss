@@ -1416,7 +1416,7 @@
 				transition: height 0.5s ease;
 
 				&.open {
-					height: 220px;
+					height: 265px;
 				}
 			}
 		}
@@ -1978,10 +1978,17 @@
 		height:500px;
 		width:100%;
 	}
-	
+
 	.gmap_canvas {
 		overflow:hidden;
 		background:none!important;
 		height:500px;
 		width:100%;
+	}
+
+	.blueprint-image {
+		img {
+			width: 100%;
+			max-width: 500px;
+		}
 	}
