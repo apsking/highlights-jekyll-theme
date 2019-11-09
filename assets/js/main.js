@@ -30,6 +30,20 @@
 			//Add form validation
 			$('#rsvp-form').on('submit', handleFormSubmit);
 
+			$('#rsvp_attending').on('change', function() {
+				const $this = $(this);
+				const $rsvpMessage = $('#rsvp_message');
+				$rsvpMessage.parent().removeClass('hidden');
+
+				if ($this.val() === "1") {
+					$('.attending-only').removeClass('hidden');
+					$rsvpMessage.attr('placeholder', 'Anything else we should know? RSVPing for a whole family? Questions? Pro Tips?');
+				} else {
+					$('.attending-only').addClass('hidden');
+					$rsvpMessage.attr('placeholder', 'You will be missed! Feel free to drop us a note, if you wish!');
+				}
+			});
+
 			$('.flip-toggle').on('click', function() {
 				const $this = $(this);
 				const cardParent = $this.parents('.flip-card');
@@ -533,13 +547,16 @@
 	}
 
 	function validateForm(form) {
-		var valid = true;
+		let valid = true;
+		const attendingVal = $('#rsvp_attending').val();
+		const isAttendingClass = attendingVal === "1" ? 'required-attending' : 'required-non-attending';
+
 		Array.from(form.elements).map(item => $(item))
 		.filter(function($item){
-			return $item.hasClass('required');
+			return $item.hasClass(isAttendingClass);
 		}).forEach(function($input){
 			const validationMsg = $input.parent().children('.form-validation-msg');
-			if ($input.val() === "") {
+			if ($input.is('select') ? $input.children('option:selected').val() === "" : $input.val() === "") {
 				valid = false;
 				validationMsg.removeClass('invisible');
 			} else {
@@ -574,22 +591,25 @@
 
 		var formData = {};
 		fields.forEach(function(name){
-		  var element = elements[name];
+			var element = elements[name];
 
-		  // singular form elements just have one value
-		  formData[name] = element.value;
+			// singular form elements just have one value
+			formData[name] = element.value;
 
-		  // when our element has multiple items, get their values
-		  if (element.length) {
-			var data = [];
-			for (var i = 0; i < element.length; i++) {
-			  var item = element.item(i);
-			  if (item.checked || item.selected) {
-				data.push(item.value);
-			  }
+			// when our element has multiple items, get their values
+			if (element.length) {
+				const data = [];
+				for (var i = 0; i < element.length; i++) {
+					var item = element.item(i);
+					if (item.checked || item.selected) {
+						const val = element.name === "rsvp_attending" ?
+							item.value.replace("1", "Yes").replace("2", "No") :
+							item.value;
+						data.push(val);
+					}
+				}
+				formData[name] = data.join(', ');
 			}
-			formData[name] = data.join(', ');
-		  }
 		});
 
 		// add form-specific values into the data

@@ -488,23 +488,34 @@
 				</div>
 				<div class="row uniform">
 					<div class="6u 12u$(xsmall) form-input">
-						<input type="text" name="rsvp_name" id="rsvp_n" placeholder="Name" class="required" />
+						<input type="text" name="rsvp_name" id="rsvp_n" placeholder="Name" class="required-attending required-non-attending" />
 						<span class="form-validation-msg invisible">Name is required.</span>
 					</div>
 					<div class="6u$ 12u$(xsmall) form-input">
-						<input type="email" name="rsvp_email" id="rsvp_email" placeholder="Email" class="required" />
+						<input type="email" name="rsvp_email" id="rsvp_email" placeholder="Email" class="required-attending required-non-attending" />
 						<span class="form-validation-msg invisible">Email is required.</span>
 					</div>
-					<div class="6u 12u$(xsmall) form-input">
-						<input type="text" name="rsvp_passphrase" id="rsvp_passphrase" placeholder="Passphrase (Check your invite!)" class="required" />
+					<div class="12u$ 12u$(xsmall) form-input">
+						<select name="rsvp_attending" id="rsvp_attending" class="required-attending required-non-attending">
+							<option value="" selected disabled hidden>Can you attend?</option>
+							<option value="1">Yes, I can't wait to celebrate!</option>
+							<option value="2">No, but I will be there in spirit.</option>
+						</select>
+						<span class="form-validation-msg invisible">Selection is required.</span>
+					</div>
+					<div class="6u 12u$(xsmall) form-input hidden attending-only">
+						<input type="text" name="rsvp_passphrase" id="rsvp_passphrase" placeholder="Passphrase (Check your invite!)" class="required-attending" />
 						<span class="form-validation-msg invisible">Passphrase is required.</span>
 					</div>
-					<div class="6u 12u$(xsmall) form-input">
-						<input type="number" name="rsvp_count" id="rsvp_count" min=1 max=10 placeholder="Number in your Party" class="required"/>
+					<div class="6u 12u$(xsmall) form-input hidden attending-only">
+						<input type="number" name="rsvp_count" id="rsvp_count" min=1 max=10 placeholder="Number in your Party" class="required-attending"/>
 						<span class="form-validation-msg invisible">Number in Party is required.</span>
 					</div>
-					<div class="12u$">
-						<textarea name="rsvp_message" id="rsvp_message" placeholder="Anything else we should know? RSVPing for a whole family? Questions? Pro Tips?" rows="4"></textarea></div>
+					<div class="12u 12u$(xsmall) form-input hidden attending-only">
+						<input type="text" name="rsvp_song" id="rsvp_song" placeholder="Any song suggestions or requests?" class="" />
+					</div>
+					<div class="12u$ hidden">
+						<textarea name="rsvp_message" id="rsvp_message" rows="4"></textarea></div>
 				    <input class="awesome" autocomplete="off" type="text" name="name" placeholder="Your name here">
 					<div class="12u$">
 						<ul class="actions">
@@ -522,7 +533,7 @@
 					<h3>Thanks for your RSVP! We can't wait to celebrate with you!</h3>
 				</div>
 				<div class="large">
-					<h3>Thanks for your RSVP! Here is a little gift from us to you. Enjoy!</h3>
+					<h3>Thanks for your RSVP! Here is a little surprise from us to you. Enjoy!</h3>
 					<div class="game"></div>
 				</div>
 			</div>
