@@ -124,7 +124,10 @@
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 			</p>
-
+			<img src="assets/images/anne-cropped.jpg" class="bio-portrait right" />
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
 		</div>
 	</div>
 </section>
@@ -479,6 +482,9 @@
 					<a href="#header" class="scrolly goto-home" title="To Top"></a>
 				</h2>
 			</header>
+			<p class="align-center">
+				We kindly ask that your RSVP before June 1<sup>st</sup>, 2020 (TBD). Thank you!
+			</p>
 			<div class="rsvp-error hide">
 				<h3>Woops! Something went wrong. Try again to make sure that we get your RSVP!</h3>
 			</div>
@@ -488,18 +494,36 @@
 				</div>
 				<div class="row uniform">
 					<div class="6u 12u$(xsmall) form-input">
-						<input type="text" name="rsvp_name" id="rsvp_n" placeholder="Name" class="required-attending required-non-attending" />
+						<input type="text" name="rsvp_name" id="rsvp_n" placeholder="Name (One representative from your party)" class="required-attending required-non-attending" />
+						<input type="hidden" name="rsvp_group_id" id="rsvp_group_id" class="hidden" />
+						<span class="form-validation-msg typeahead-validation-msg hidden">Sorry! This name isn't on RSVP list. Please contact Alex and Kimberly if you believe this is an error!</span>
+						<span class="form-validation-msg already-rsvp-validation-msg hidden">It looks like you already RSVP'ed<span class="rsvp-count"></span>! Please contact Alex and Kimberly if you would like to update it!</span>
 						<span class="form-validation-msg invisible">Name is required.</span>
 					</div>
 					<div class="6u$ 12u$(xsmall) form-input">
-						<input type="email" name="rsvp_email" id="rsvp_email" placeholder="Email" class="required-attending required-non-attending" />
-						<span class="form-validation-msg invisible">Email is required.</span>
+						<input type="text" name="rsvp_mailing" id="rsvp_mailing" placeholder="Mailing Address" />
 					</div>
 					<div class="12u$ 12u$(xsmall) form-input">
-						<select name="rsvp_attending" id="rsvp_attending" class="required-attending required-non-attending">
+						<select name="rsvp_attending" id="rsvp_attending" class="required-attending required-non-attending yes-no" disabled="disabled">
 							<option value="" selected disabled hidden>Can you attend?</option>
 							<option value="1">Yes, I can't wait to celebrate!</option>
 							<option value="2">No, but I will be there in spirit.</option>
+						</select>
+						<span class="form-validation-msg invisible">Selection is required.</span>
+					</div>
+					<div class="6u 12u$(xsmall) form-input hidden attending-only">
+						<select name="rsvp_attending_welcome" id="rsvp_attending_welcome" class="required-attending yes-no">
+							<option value="" selected disabled hidden>Will you attend the welcome reception?</option>
+							<option value="1">Yes</option>
+							<option value="2">No</option>
+						</select>
+						<span class="form-validation-msg invisible">Selection is required.</span>
+					</div>
+					<div class="6u$ 12u$(xsmall) form-input hidden attending-only">
+						<select name="rsvp_attending_farewell" id="rsvp_attending_farewell" class="required-attending yes-no">
+							<option value="" selected disabled hidden>Will you attend the farewell brunch?</option>
+							<option value="1">Yes</option>
+							<option value="2">No</option>
 						</select>
 						<span class="form-validation-msg invisible">Selection is required.</span>
 					</div>
@@ -508,7 +532,9 @@
 						<span class="form-validation-msg invisible">Passphrase is required.</span>
 					</div>
 					<div class="6u 12u$(xsmall) form-input hidden attending-only">
-						<input type="number" name="rsvp_count" id="rsvp_count" min=1 max=10 placeholder="Number in your Party" class="required-attending"/>
+						<select name="rsvp_count" id="rsvp_count" class="required-attending">
+							<option value="" selected disabled hidden>Number in your party</option>
+						</select>
 						<span class="form-validation-msg invisible">Number in Party is required.</span>
 					</div>
 					<div class="12u 12u$(xsmall) form-input hidden attending-only">
@@ -516,10 +542,10 @@
 					</div>
 					<div class="12u$ hidden">
 						<textarea name="rsvp_message" id="rsvp_message" rows="4"></textarea></div>
-				    <input class="awesome" autocomplete="off" type="text" name="name" placeholder="Your name here">
+				    <input class="awesome" autocomplete="no" type="text" name="name" placeholder="Your name here">
 					<div class="12u$">
 						<ul class="actions">
-							<li><input type="submit" value="Send RSVP" class="special" title="Send RSVP" /></li>
+							<li><input type="submit" value="Send RSVP" id="submit_rsvp" class="special" title="Send RSVP" disabled="disabled" /></li>
 						</ul>
 					</div>
 				</div>

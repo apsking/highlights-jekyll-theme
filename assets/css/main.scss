@@ -1996,3 +1996,32 @@
 	.hidden {
 		display: none !important;
 	}
+
+	//typeahead
+	.twitter-typeahead {
+		width: 100%;
+
+		.tt-menu {
+			width: 100%;
+		}
+
+		.tt-dataset {
+			background-color: white;
+	    	border: gray solid 2px;
+
+			.tt-suggestion {
+				min-height: 35px;
+			    padding-left: 10px;
+				padding-top: 5px;
+			    padding-bottom: 5px;
+			}
+
+			.tt-selectable {
+				cursor: pointer;
+
+				&:hover {
+					background-color: #8cd1a8;
+				}
+			}
+		}
+	}

@@ -44,6 +44,195 @@
 				}
 			});
 
+
+			//RSVP TypeAhead
+			var substringMatcher = function(strs) {
+			  return function findMatches(q, cb) {
+			    var matches, substringRegex;
+
+			    // an array that will be populated with substring matches
+			    matches = [];
+
+			    // regex used to determine if a string contains the substring `q`
+			    substrRegex = new RegExp(`^${q}`, 'i');
+
+			    // iterate through the pool of strings and for any string that
+			    // contains the substring `q`, add it to the `matches` array
+			    $.each(strs, function(i, str) {
+			      if (
+					  substrRegex.test(str.replace('í','i')) ||
+					  str.split(/[\s-]/).some(sub => substrRegex.test(sub.replace('í','i')))) {
+			        matches.push(str);
+			      }
+			    });
+
+			    cb(matches);
+			  };
+			};
+
+			const attendeeGroups = [
+				{ id: 1, maxCount: 2, attendees: ["Maureen Lowell", "Douglas Lowell"] },
+				{ id: 2, maxCount: 2, attendees: ["Shannon Howard", "Robert Howard"] },
+				{ id: 3, maxCount: 2, attendees: ["Heather Lowell", "Jarod Diaz"] },
+				{ id: 4, maxCount: 2, attendees: ["Edrina Nazaradeh"] },
+				{ id: 5, maxCount: 1, attendees: ["Taiga Harimoto"] },
+				{ id: 6, maxCount: 2, attendees: ["Harriet Courts", "John Courts"] },
+				{ id: 7, maxCount: 2, attendees: ["Nigel King", "Cassandra King"] },
+				{ id: 8, maxCount: 4, attendees: ["Ashley Taylor", "Jake Taylor"] },
+				{ id: 9, maxCount: 2, attendees: ["Monika Fuss", "Peter Fuss"] },
+				{ id: 10, maxCount: 5, attendees: ["Ingrid Gerbino", "Tony Gerbino"] },
+				{ id: 11, maxCount: 2, attendees: ["Jeanette Hipskind", "Linda Thomas"] },
+				{ id: 12, maxCount: 1, attendees: ["Julianne Hipskind", "Nana Hipskind"] },
+				{ id: 13, maxCount: 1, attendees: ["Father J. Tim Hipskind"] },
+				{ id: 14, maxCount: 3, attendees: ["Jim Hipskind"] },
+				{ id: 15, maxCount: 5, attendees: ["Suzanne McHugh", "Phil McHugh"] },
+				{ id: 16, maxCount: 3, attendees: ["Colleen Sweeney", "Brian Sweeney"] },
+				{ id: 17, maxCount: 5, attendees: ["Kevin Hipskind", "Michelle Hipskind"] },
+				{ id: 18, maxCount: 4, attendees: ["Anne Roberts", "Tim Roberts"] },
+				{ id: 19, maxCount: 2, attendees: ["Dean Lowell", "Norma Lowell"] },
+				{ id: 20, maxCount: 5, attendees: ["Dave Lowell", "Jeanne Lowell"] },
+				{ id: 21, maxCount: 2, attendees: ["Kevin Lowell", "Chris Lowell"] },
+				{ id: 22, maxCount: 2, attendees: ["Anna Lowell", "Tom Cassell"] },
+				{ id: 23, maxCount: 2, attendees: ["Jessica Lowell", "Joe Meilahn"] },
+				{ id: 24, maxCount: 4, attendees: ["Randy Lowell", "Heather Barr Lowell"] },
+				{ id: 25, maxCount: 2, attendees: ["Dayna Ko Nham", "Bryston Nham"] },
+				{ id: 26, maxCount: 2, attendees: ["Grace Ferrara"] },
+				{ id: 27, maxCount: 2, attendees: ["Michael Lim", "Becca Zavala"] },
+				{ id: 28, maxCount: 2, attendees: ["Rocío de la Vega"] },
+				{ id: 29, maxCount: 2, attendees: ["Denise Robison", "Rich Robison"] },
+				{ id: 30, maxCount: 3, attendees: ["Martin Robison", "Kate Robison"] },
+				{ id: 31, maxCount: 4, attendees: ["Mike Frerichs", "Jordan Frerichs"] },
+				{ id: 32, maxCount: 2, attendees: ["Erik Omlid", "Katie Omlid"] },
+				{ id: 33, maxCount: 2, attendees: ["Jesse Peters", "Trisha Peters"] },
+				{ id: 34, maxCount: 1, attendees: ["Jesse Pratt"] },
+				{ id: 35, maxCount: 1, attendees: ["Travis Tallan"] },
+				{ id: 36, maxCount: 2, attendees: ["Roman Daberkow", "Valerie Daberkow"] },
+				{ id: 37, maxCount: 3, attendees: ["Grant Hedrick", "Bergenn Hedrick"] },
+				{ id: 38, maxCount: 1, attendees: ["Luis Rodriguez"] },
+				{ id: 39, maxCount: 2, attendees: ["Michael Clements", "Jaqueline Clements"] },
+				{ id: 40, maxCount: 2, attendees: ["Jason Clements"] },
+				{ id: 41, maxCount: 2, attendees: ["KelliNicole Clements Shipman", "Ryan Shipman"] },
+				{ id: 42, maxCount: 2, attendees: ["Paul Harimoto", "Ruth Harimoto"] },
+				{ id: 43, maxCount: 2, attendees: ["Julie Lim"] },
+				{ id: 44, maxCount: 3, attendees: ["John Melville", "Susan Anderson"] },
+				{ id: 45, maxCount: 5, attendees: ["Jim Lobdell", "Colleen Anderson-Lobdell"] },
+				{ id: 46, maxCount: 4, attendees: ["Phil Kiekhaefer", "Christine Kiekhaefer"] },
+				{ id: 47, maxCount: 4, attendees: ["Nanette Nazaradeh", "Edward Nazaradeh"] },
+				{ id: 48, maxCount: 2, attendees: ["Zach Soulliard", "Jerry Veiga"] },
+				{ id: 49, maxCount: 2, attendees: ["Alex Grant", "Thomas Lux"] },
+				{ id: 50, maxCount: 2, attendees: ["Hannah Fitterman-Harris", "Chris Fitterman-Harris"] },
+				{ id: 51, maxCount: 2, attendees: ["Tim Hipskind Sr.", "Gloria Hipskind"] },
+				{ id: 52, maxCount: 3, attendees: ["Wendy Hipskind Lear", "Scott Lear"] },
+				{ id: 53, maxCount: 2, attendees: ["Kim Fleer"] },
+				{ id: 54, maxCount: 1, attendees: ["Pete Bergene"] },
+				{ id: 55, maxCount: 1, attendees: ["Eric Kenji Lee"] },
+				{ id: 56, maxCount: 1, attendees: ["Angela King"] },
+				{ id: 57, maxCount: 2, attendees: ["Clive King", "Anne King"] },
+				{ id: 58, maxCount: 1, attendees: ["Robert King"] },
+				{ id: 59, maxCount: 4, attendees: ["Jane Verde", "Mark Verde"] },
+				{ id: 60, maxCount: 2, attendees: ["Katherine Oven"] },
+				{ id: 61, maxCount: 2, attendees: ["Michelle Wedig"] },
+				{ id: 62, maxCount: 2, attendees: ["Janine Romano"] },
+				{ id: 63, maxCount: 1, attendees: ["Allison Ma"] },
+				{ id: 64, maxCount: 1, attendees: ["Maddy Berry"] },
+				{ id: 65, maxCount: 1, attendees: ["Westley Dang"] },
+				{ id: 66, maxCount: 1, attendees: ["Travis Dos Santos Tam"] },
+				{ id: 67, maxCount: 1, attendees: ["Drew Anderson"] },
+				{ id: 68, maxCount: 2, attendees: ["Reilly Rosbotham", "Rachel Sugar"] },
+				{ id: 69, maxCount: 2, attendees: ["Christian Foster"] },
+				{ id: 70, maxCount: 2, attendees: ["Chris Spalding"] },
+				{ id: 71, maxCount: 2, attendees: ["Maria Meinerding", "Matt Mathews"] },
+				{ id: 72, maxCount: 1, attendees: ["Liz Kidd"] },
+				{ id: 73, maxCount: 1, attendees: ["Jordan Collins"] },
+				{ id: 74, maxCount: 2, attendees: ["Austin Burns"] },
+				{ id: 75, maxCount: 1, attendees: ["Tanesha Johnson"] },
+				{ id: 76, maxCount: 1, attendees: ["Madeline Bruce"] },
+				{ id: 77, maxCount: 3, attendees: ["Ruth Schacht", "Noam Gryzm"] },
+				{ id: 78, maxCount: 2, attendees: ["Lizzy Andrews"] },
+				{ id: 79, maxCount: 2, attendees: ["Natividad Moreno Monge", "Manolo Ferreras Moreno"] },
+				{ id: 80, maxCount: 2, attendees: ["Jeff Witt"] },
+				{ id: 81, maxCount: 3, attendees: ["Andy Ten", "Katya Ten"] },
+				{ id: 82, maxCount: 2, attendees: ["Maria Ivanteeva"] },
+				{ id: 83, maxCount: 2, attendees: ["Trevor Bates"] },
+				{ id: 84, maxCount: 2, attendees: ["Maria Kraemer", "Daniel Kraemer"] },
+				{ id: 85, maxCount: 2, attendees: ["Emily Burke"] },
+				{ id: 86, maxCount: 5, attendees: ["Adrienne Ochs", "Ben Ochs"] },
+				{ id: 87, maxCount: 4, attendees: ["Tim Zanni", "Kristin Zanni"] },
+			];
+
+			const attendees = attendeeGroups
+				.map(a => a.attendees)
+				.flat()
+				.sort((a,b) => a.localeCompare(b));
+
+			$('#rsvp_n').typeahead({
+			  hint: true,
+			  highlight: true,
+			  minLength: 2
+			},
+			{
+			  name: 'attendees',
+			  source: substringMatcher(attendees),
+			  limit: 8
+			});
+
+			// Hack to update this value to stop chrome from auto filling
+			$('#rsvp_n').prev().attr('autocomplete', 'no');
+			$('#rsvp_n').attr('autocomplete', 'no');
+
+			//Add immediate input validation
+			$('#rsvp_n').on('blur', async function(){
+				const value = $(this).val();
+
+				if (!attendees.includes(value)) {
+					if (value !== "") {
+						$('.typeahead-validation-msg').removeClass('hidden');
+
+					}
+					$('#rsvp_attending').attr('disabled', 'disabled');
+					$('#submit_rsvp').attr('disabled', 'disabled');
+					$(".already-rsvp-validation-msg").addClass('hidden');
+
+				} else {
+					const group = attendeeGroups.filter(group => {
+						return group.attendees.includes(value);
+					})[0];
+
+					const response = await $.get('https://script.google.com/macros/s/AKfycbwhE1PU3mnKGYSBRqaGQYiimwmo6S3GJjFKDRMyRezFzqIO6j8/exec',
+						`groupId=${group.id}`);
+
+					if (response.data.found) {
+						const rsvpLabel = response.data.count === "" ? "" :
+							response.data.count === 1 ? ' for 1 person' : ` for ${response.data.count} people`;
+						$(".already-rsvp-validation-msg .rsvp-count").text(rsvpLabel);
+						$(".already-rsvp-validation-msg").removeClass('hidden');
+					} else {
+						$('#rsvp_attending').removeAttr('disabled');
+						$('#submit_rsvp').removeAttr('disabled');
+
+						$('.typeahead-validation-msg').addClass('hidden');
+						$(".already-rsvp-validation-msg").addClass('hidden');
+
+						const countFirstOption = $('#rsvp_count').children().first();
+
+						$('#rsvp_group_id').val(group.id);
+
+						const $rsvpInput = $('#rsvp_count');
+						const options = Array.from({length: group.maxCount}, (v, i) => i + 1)
+							.map(number => `<option value="${number}">${number}</option>`)
+							.join('');
+						$rsvpInput.empty();
+						$rsvpInput.append(countFirstOption);
+						$rsvpInput.append(options);
+					}
+				}
+			});
+
+			//Select all on click
+			$('#rsvp_n').on('click', function(){
+				$(this).select();
+			});
+
 			$('.flip-toggle').on('click', function() {
 				const $this = $(this);
 				const cardParent = $this.parents('.flip-card');
@@ -553,7 +742,7 @@
 
 		Array.from(form.elements).map(item => $(item))
 		.filter(function($item){
-			return $item.hasClass(isAttendingClass);
+			return $item.hasClass(isAttendingClass) && !$item.hasClass('tt-hint');
 		}).forEach(function($input){
 			const validationMsg = $input.parent().children('.form-validation-msg');
 			if ($input.is('select') ? $input.children('option:selected').val() === "" : $input.val() === "") {
@@ -602,7 +791,7 @@
 				for (var i = 0; i < element.length; i++) {
 					var item = element.item(i);
 					if (item.checked || item.selected) {
-						const val = element.name === "rsvp_attending" ?
+						const val = element.className.includes('yes-no') ?
 							item.value.replace("1", "Yes").replace("2", "No") :
 							item.value;
 						data.push(val);
