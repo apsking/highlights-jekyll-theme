@@ -187,7 +187,8 @@
 				if (!attendees.includes(value)) {
 					if (value !== "") {
 						$('.typeahead-validation-msg').removeClass('hidden');
-
+					} else {
+						$('.typeahead-validation-msg').addClass('hidden');
 					}
 					$('#rsvp_attending').attr('disabled', 'disabled');
 					$('#submit_rsvp').attr('disabled', 'disabled');
