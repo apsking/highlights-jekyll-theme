@@ -525,10 +525,6 @@
 			window.gameState.achievementCompleted('cedarvale');
 		});
 
-		setTimeout(function() {
-			window.gameState.achievementCompleted('welcome');
-		}, 3000);
-
 		var flipCount = {};
 		$('.flip-toggle').on('click', function() {
 			const uniqueId = $(this).attr('data-id');
