@@ -1997,6 +1997,21 @@
 		display: none !important;
 	}
 
+	.img-hotel {
+		max-width: 300px;
+		max-height: 200px;
+	}
+
+	#directions {
+		.flip-card-inner {
+			border-bottom-width: 0px;
+		}
+
+		.flip-card {
+			margin-bottom: 30px;
+		}
+ 	}
+
 	//typeahead
 	.twitter-typeahead {
 		width: 100%;

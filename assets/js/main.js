@@ -151,7 +151,7 @@ function substringMatcher(strs) {
 
 				if ($this.val() === "1") {
 					$('.attending-only').removeClass('hidden');
-					$rsvpMessage.attr('placeholder', 'Anything else we should know? RSVPing for a whole family? Questions? Pro Tips?');
+					$rsvpMessage.attr('placeholder', 'Food restrictions? Any accommodations needed?');
 				} else {
 					$('.attending-only').addClass('hidden');
 					$rsvpMessage.attr('placeholder', 'You will be missed! Feel free to drop us a note, if you wish!');
