@@ -36,7 +36,7 @@
 					<a>The Registry</a>
 				</li>
 				<li href="#faqs" class="scrolly" title="FAQs">
-					<a>FAQs</a>
+					<a>The FAQs</a>
 				</li>
 			</ul>
 		</div>
@@ -391,13 +391,13 @@
 				When should I RSVP by?
 			</h3>
 			<p>
-				TBD.
+				We kindly ask that your RSVP before June 1<sup>st</sup>, 2020. Thank you!
 			</p>
 			<h3>
 				Do you have a gift registry?
 			</h3>
 			<p>
-				Yes! You can find our registry <a href="#registry" class="scrolly">here.</a>
+				Yes! You can find our registry <a href="https://www.blueprintregistry.com/registry/kimberlyandalex" target="_blank" class="scrolly">here.</a>
 			</p>
 			<h3>
 				What time should I arrive at the ceremony?
@@ -492,7 +492,7 @@
 				</h2>
 			</header>
 			<p class="align-center">
-				We kindly ask that your RSVP before June 1<sup>st</sup>, 2020 (TBD). Thank you!
+				We kindly ask that your RSVP before June 1<sup>st</sup>, 2020. Thank you!
 			</p>
 			<div class="rsvp-error hide">
 				<h3>Woops! Something went wrong. Try again to make sure that we get your RSVP!</h3>
@@ -505,9 +505,10 @@
 					<div class="6u 12u$(xsmall) form-input">
 						<input type="text" name="rsvp_name" id="rsvp_n" placeholder="Name (One representative from your party)" class="required-attending required-non-attending" />
 						<input type="hidden" name="rsvp_group_id" id="rsvp_group_id" class="hidden" />
+						<span class="form-validation-msg typeahead-validation-loading hidden"><i class="spinner fas fa-lg fa-spinner"></i></span>
 						<span class="form-validation-msg typeahead-validation-msg hidden">Sorry! This name isn't on RSVP list. Please contact Kimberly and Alex if you believe this is an error!</span>
-						<span class="form-validation-msg already-rsvp-validation-msg hidden">It looks like you already RSVP'ed<span class="rsvp-count"></span>! Please contact Kimberly and Alex if you would like to update it!</span>
-						<span class="form-validation-msg invisible">Name is required.</span>
+						<span class="form-validation-msg already-rsvp-validation-msg hidden">It looks like your party already RSVP'ed<span class="rsvp-count"></span>! Please contact Kimberly and Alex if you would like to update it!</span>
+						<span class="form-validation-msg form-validation-msg-required invisible">Name is required.</span>
 					</div>
 					<div class="6u$ 12u$(xsmall) form-input">
 						<input type="text" name="rsvp_mailing" id="rsvp_mailing" placeholder="Mailing Address" />
@@ -518,7 +519,7 @@
 							<option value="1">Yes, I can't wait to celebrate!</option>
 							<option value="2">No, but I will be there in spirit.</option>
 						</select>
-						<span class="form-validation-msg invisible">Selection is required.</span>
+						<span class="form-validation-msg form-validation-msg-required invisible">Selection is required.</span>
 					</div>
 					<div class="6u 12u$(xsmall) form-input hidden attending-only">
 						<select name="rsvp_attending_welcome" id="rsvp_attending_welcome" class="required-attending yes-no">
@@ -526,7 +527,7 @@
 							<option value="1">Yes</option>
 							<option value="2">No</option>
 						</select>
-						<span class="form-validation-msg invisible">Selection is required.</span>
+						<span class="form-validation-msg form-validation-msg-required invisible">Selection is required.</span>
 					</div>
 					<div class="6u$ 12u$(xsmall) form-input hidden attending-only">
 						<select name="rsvp_attending_farewell" id="rsvp_attending_farewell" class="required-attending yes-no">
@@ -534,18 +535,18 @@
 							<option value="1">Yes</option>
 							<option value="2">No</option>
 						</select>
-						<span class="form-validation-msg invisible">Selection is required.</span>
+						<span class="form-validation-msg form-validation-msg-required invisible">Selection is required.</span>
 					</div>
 					<div class="6u 12u$(xsmall) form-input hidden attending-only">
 						<input type="text" name="rsvp_passphrase" id="rsvp_passphrase" placeholder="Passphrase (Check your invite!)" class="required-attending" />
 						<span class="form-validation-msg passphrase-validation-msg hidden">Sorry, the passphrase is incorrect! Check your invite once more. Contact Kimberly or Alex if you seemed to have misplaced it! </span>
-						<span class="form-validation-msg invisible">Passphrase is required.</span>
+						<span class="form-validation-msg form-validation-msg-required invisible">Passphrase is required.</span>
 					</div>
 					<div class="6u 12u$(xsmall) form-input hidden attending-only">
 						<select name="rsvp_count" id="rsvp_count" class="required-attending">
 							<option value="" selected disabled hidden>Number in your party</option>
 						</select>
-						<span class="form-validation-msg invisible">Number in Party is required.</span>
+						<span class="form-validation-msg form-validation-msg-required invisible">Number in Party is required.</span>
 					</div>
 					<div class="12u 12u$(xsmall) form-input hidden attending-only">
 						<input type="text" name="rsvp_song" id="rsvp_song" placeholder="Any song suggestions or requests?" class="" />

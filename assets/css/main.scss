@@ -1824,14 +1824,14 @@
 		right: 0;
 		position: absolute;
 		background: rgba(144, 144, 144, 0.5);
+		padding-top: 50%;
+	}
 
-		.spinner {
-			margin: 6em;
-			animation-name: spinner-rotate;
-	  		animation-duration: 1500ms;
-		  	animation-iteration-count: infinite;
-		  	animation-timing-function: linear;
-		}
+	.spinner {
+		animation-name: spinner-rotate;
+		animation-duration: 1500ms;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
 	}
 
 	.rsvp-already-completed {

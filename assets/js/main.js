@@ -181,9 +181,7 @@ function substringMatcher(strs) {
 				const value = $(this).val();
 
 				if (!attendees.includes(value)) {
-					if (value === "") {
-						$('.typeahead-validation-msg').removeClass('hidden');
-					} else {
+					if (value !== "") {
 						$('.typeahead-validation-msg').addClass('hidden');
 					}
 					$('#rsvp_attending').attr('disabled', 'disabled');
@@ -195,8 +193,11 @@ function substringMatcher(strs) {
 						return group.attendees.includes(value);
 					})[0];
 
+					$('.typeahead-validation-loading').removeClass('hidden');
+					$(".already-rsvp-validation-msg").addClass('hidden');
 					const response = await $.get('https://script.google.com/macros/s/AKfycbwhE1PU3mnKGYSBRqaGQYiimwmo6S3GJjFKDRMyRezFzqIO6j8/exec',
 						`groupId=${group.id}`);
+					$('.typeahead-validation-loading').addClass('hidden');
 
 					if (response.data.found) {
 						const rsvpLabel = response.data.count === "" ? "" :
@@ -747,7 +748,7 @@ function substringMatcher(strs) {
 		.filter(function($item){
 			return $item.hasClass(isAttendingClass) && !$item.hasClass('tt-hint');
 		}).forEach(function($input){
-			const validationMsg = $input.parent().children('.form-validation-msg');
+			const validationMsg = $input.parent().children('.form-validation-msg-required');
 			if ($input.is('select') ? $input.children('option:selected').val() === "" : $input.val() === "") {
 				valid = false;
 				validationMsg.removeClass('invisible');
@@ -760,11 +761,18 @@ function substringMatcher(strs) {
 				}
 
 			} else if($input.attr('name') === 'rsvp_passphrase' ) {
-				if ($input.val() !== "lemondrop") {
+				if ($input.val() === "") {
+					valid = false;
+					validationMsg.removeClass('invisible');
+					$('.passphrase-validation-msg').removeClass('hidden');
+				} else if ($input.val() !== "lemondrop") {
 					valid = false;
 					$('.passphrase-validation-msg').removeClass('hidden');
+					validationMsg.addClass('invisible');
+
 				} else {
 					$('.passphrase-validation-msg').addClass('hidden');
+					validationMsg.addClass('invisible');
 				}
 
 			} else {
