@@ -1,9 +1,7 @@
-
 /* GET returns whether or a group ID already exists. */
 function doGet(e) {
     try {
         Logger.log(e); // the Google Script version of console.log see: Class Logger
-        //console.log(e);
         var response = idExists(e);
 
         return ContentService    // return json successs results
@@ -31,7 +29,7 @@ function doPost(e) {
                 JSON.stringify({"result":"success",
                 "data": JSON.stringify(e.parameters) }))
                 .setMimeType(ContentService.MimeType.JSON);
-            }
+    }
     catch(error) { // if error return this
         Logger.log(error);
         return ContentService
