@@ -2012,6 +2012,14 @@
 		}
  	}
 
+	#family {
+		img {
+			max-width: 400px;
+			width: 100%;
+			border-radius: 15em;
+		}
+	}
+
 	//typeahead
 	.twitter-typeahead {
 		width: 100%;
