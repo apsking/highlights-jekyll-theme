@@ -9,7 +9,7 @@
 @import 'libs/slick.scss';
 @import 'libs/slick-theme.scss';
 @import 'blockrain.css';
-@import url("https://fonts.googleapis.com/css?family=Raleway:400,400italic,700,800");
+@import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond&display=swap");
 
 /*
 	Highlights by HTML5 UP
@@ -103,12 +103,12 @@
 	a {
 		@include vendor('transition', ('color #{_duration(transition)} ease-in-out', 'border-bottom-color #{_duration(transition)} ease-in-out'));
 		border-bottom: dotted 1px;
-		color: _palette(accent1, bg);
+		color: _palette(accent3, bg);
 		text-decoration: none;
 
 		&:hover {
 			border-bottom-color: transparent !important;
-			color: _palette(accent1, bg) !important;
+			color: _palette(accent3, bg) !important;
 			text-decoration: none;
 		}
 	}
@@ -1841,7 +1841,7 @@
 
 	.score {
 		float: right;
-	    background: #8cd1a8;
+	    background: _palette(accent1, bg);
 	    width: 30px;
 	    height: 30px;
 	    border-radius: 15px;
@@ -2043,7 +2043,7 @@
 				cursor: pointer;
 
 				&:hover {
-					background-color: #8cd1a8;
+					background-color: _palette(accent1, bg);
 				}
 			}
 		}

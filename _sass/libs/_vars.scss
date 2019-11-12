@@ -18,7 +18,7 @@
 
 // Font.
 	$font: (
-		family:				('Raleway', 'Helvetica', sans-serif),
+		family:				('Cormorant Garamond', serif),
 		family-fixed:		('Courier New', monospace),
 		weight:				400,
 		weight-bold:		700,
@@ -49,11 +49,11 @@
 		),
 
 		accent1: (
-			bg:				#8cd1a8,
+			bg:				#b8c0ff,
 			fg-bold:		#ffffff,
-			fg:				mix(#8cd1a8, #ffffff, 25%),
-			fg-light:		mix(#8cd1a8, #ffffff, 40%),
-			fg-lighter:		mix(#8cd1a8, #ffffff, 90%),
+			fg:				mix(#b8c0ff, #ffffff, 25%),
+			fg-light:		mix(#b8c0ff, #ffffff, 40%),
+			fg-lighter:		mix(#b8c0ff, #ffffff, 90%),
 			border:			rgba(255,255,255,0.25),
 			border-bg:		rgba(255,255,255,0.075),
 			border2:		rgba(255,255,255,0.5),
@@ -70,5 +70,17 @@
 			border-bg:		rgba(255,255,255,0.075),
 			border2:		rgba(255,255,255,0.5),
 			border2-bg:		rgba(255,255,255,0.2)
-		)
+		),
+
+		accent3: (
+			bg:				#6779ff,
+			fg-bold:		#ffffff,
+			fg:				mix(#6779ff, #ffffff, 25%),
+			fg-light:		mix(#6779ff, #ffffff, 40%),
+			fg-lighter:		mix(#6779ff, #ffffff, 90%),
+			border:			rgba(255,255,255,0.25),
+			border-bg:		rgba(255,255,255,0.075),
+			border2:		rgba(255,255,255,0.5),
+			border2-bg:		rgba(255,255,255,0.2)
+		),
 	);
