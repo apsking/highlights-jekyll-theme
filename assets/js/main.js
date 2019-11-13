@@ -765,7 +765,7 @@ function substringMatcher(strs) {
 					valid = false;
 					validationMsg.removeClass('invisible');
 					$('.passphrase-validation-msg').removeClass('hidden');
-				} else if ($input.val() !== "lemondrop") {
+				} else if ($input.val() !== "popcorn") {
 					valid = false;
 					$('.passphrase-validation-msg').removeClass('hidden');
 					validationMsg.addClass('invisible');
