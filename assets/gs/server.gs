@@ -1,18 +1,21 @@
+
 /* GET returns whether or a group ID already exists. */
 function doGet(e) {
     try {
         Logger.log(e); // the Google Script version of console.log see: Class Logger
+        //console.log(e);
         var response = idExists(e);
 
         return ContentService    // return json successs results
         .createTextOutput(
-            JSON.stringify({ "result":"success", "data": response }))
+            JSON.stringify({"result":"success",
+            "data": response }))
             .setMimeType(ContentService.MimeType.JSON);
         }
     catch(error) { // if error return this
         Logger.log(error);
         return ContentService
-        .createTextOutput(JSON.stringify({ "result":"error", "error": error }))
+        .createTextOutput(JSON.stringify({"result":"error", "error": error}))
         .setMimeType(ContentService.MimeType.JSON);
     }
 }
@@ -29,7 +32,7 @@ function doPost(e) {
                 JSON.stringify({"result":"success",
                 "data": JSON.stringify(e.parameters) }))
                 .setMimeType(ContentService.MimeType.JSON);
-    }
+            }
     catch(error) { // if error return this
         Logger.log(error);
         return ContentService
@@ -78,6 +81,7 @@ function idExists(e) {
 function recordData(e) {
     var lock = LockService.getDocumentLock();
     lock.waitLock(30000); // hold off up to 30 sec to avoid concurrent writing
+    var errorThrown = null;
 
     try {
         Logger.log(JSON.stringify(e)); // log the POST data in case we need to debug it
@@ -97,6 +101,10 @@ function recordData(e) {
         for (var i = 1; i < oldHeader.length; i++) { // start at 1 to avoid Timestamp column
             var field = oldHeader[i];
             var output = getFieldFromData(field, e.parameters);
+            if (field === 'rsvp_passphrase' && output !== '<REDACTED>') {
+                throw new Error('Invalid Passphrase');
+            }
+
             row.push(output);
 
             // mark as stored by removing from form fields
@@ -109,6 +117,9 @@ function recordData(e) {
         // set any new fields in our form
         for (var i = 0; i < fieldsFromForm.length; i++) {
             var field = fieldsFromForm[i];
+            if (field.indexOf('rsvp') < 0) {
+                throw new Error("Illegal field");
+            }
             var output = getFieldFromData(field, e.parameters);
             row.push(output);
             newHeader.push(field);
@@ -125,9 +136,13 @@ function recordData(e) {
     }
     catch(error) {
         Logger.log(error);
+        errorThrown = error;
     }
     finally {
         lock.releaseLock();
+        if (errorThrown !== null) {
+          throw errorThrown;
+        }
         return;
     }
 
@@ -151,6 +166,15 @@ function testExists() {
         groupId: 1
     }}
     Logger.log(idExists(e));
+}
+
+function testRecordError() {
+    var e = { parameters: {
+        name: 'alex'
+    }}
+
+    recordData(e);
+    Logger.log('success');
 }
 
 //TEST
