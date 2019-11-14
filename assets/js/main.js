@@ -694,7 +694,14 @@ function substringMatcher(strs) {
 			$('.form-overlay').addClass('hide');
 			return false;
 		}
-		var data = formData.data;
+		let data = formData.data;
+		let cleaned = Object.keys(data).reduce((acc, cur) => {
+			const val = data[cur];
+			if (val !== "") {
+				acc[cur] = val;
+			}
+			return acc;
+		}, {});
 
 		// If a honeypot field is filled, assume it was done so by a spam bot.
 		if (formData.honeypot) {
@@ -703,21 +710,17 @@ function substringMatcher(strs) {
 		}
 
 		// If additional fields are added
-		if (JSON.parse(formData.data.formDataNameOrder).some(name => !name.includes('rsvp'))) {
+		if (JSON.parse(cleaned.formDataNameOrder).some(name => !name.includes('rsvp'))) {
 			$('.form-overlay').addClass('hide');
 			return false;
 		}
 
 		var url = form.action;
 
-		var encoded = Object.keys(data).map(function(k) {
-		     return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
-		}).join('&');
-
 		$.ajax({
 		    url: url,
 		    type: 'post',
-		    data: data,
+		    data: cleaned,
 		    dataType: 'json',
 		    success: function(data, status, xhr) {
 				if (xhr.status === 200) {
