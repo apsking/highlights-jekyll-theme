@@ -724,11 +724,19 @@ function substringMatcher(strs) {
 		    dataType: 'json',
 		    success: function(data, status, xhr) {
 				if (xhr.status === 200) {
-				    form.reset();
+					if (data.error && data.error.message === 'Invalid Passphrase') {
+					    $('.passphrase-validation-msg').removeClass('hidden');
+					    $('#rsvp_passphrase').parent()
+					   		.children('.form-validation-msg-required')
+							.addClass('invisible');
 
-					initGame();
-					$('.rsvp-form').addClass('hide');
-					$('.rsvp-thanks').removeClass('hide');
+				    } else {
+					    form.reset();
+
+	   					initGame();
+	   					$('.rsvp-form').addClass('hide');
+	   					$('.rsvp-thanks').removeClass('hide');
+				    }
 				} else {
 					$('.rsvp-error').removeClass('hide');
 				}
@@ -738,7 +746,7 @@ function substringMatcher(strs) {
 		    $('rsvp-error').removeClass('hide)');
 		})
 		.always(function() {
-			$('.form-overlay').removeClass('hide');
+			$('.form-overlay').addClass('hide');
 		});
 	}
 
@@ -768,11 +776,6 @@ function substringMatcher(strs) {
 					valid = false;
 					validationMsg.removeClass('invisible');
 					$('.passphrase-validation-msg').removeClass('hidden');
-				} else if ($input.val() !== "popcorn") {
-					valid = false;
-					$('.passphrase-validation-msg').removeClass('hidden');
-					validationMsg.addClass('invisible');
-
 				} else {
 					$('.passphrase-validation-msg').addClass('hidden');
 					validationMsg.addClass('invisible');
