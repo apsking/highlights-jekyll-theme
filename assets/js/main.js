@@ -17,7 +17,7 @@ const attendeeGroups = [
 	{ id: 10, maxCount: 5, attendees: ["Ingrid Gerbino", "Tony Gerbino"] },
 	{ id: 11, maxCount: 2, attendees: ["Jeanette Hipskind", "Linda Thomas"] },
 	{ id: 12, maxCount: 1, attendees: ["Julianne Hipskind", "Nana Hipskind"] },
-	{ id: 13, maxCount: 1, attendees: ["Father J. Tim Hipskind"] },
+	{ id: 13, maxCount: 1, attendees: ["Tim Hipskind, SJ"] },
 	{ id: 14, maxCount: 3, attendees: ["Jim Hipskind"] },
 	{ id: 15, maxCount: 5, attendees: ["Suzanne McHugh", "Phil McHugh"] },
 	{ id: 16, maxCount: 3, attendees: ["Colleen Sweeney", "Brian Sweeney"] },
