@@ -261,6 +261,18 @@ function substringMatcher(strs) {
 				}
 			});
 
+			$('#family-desc-collapse').on('click', function() {
+				const $this = $(this);
+
+				if ($this.hasClass('collapsed')) {
+					$('.collapse').removeClass('collapsed');
+					$this.removeClass('collapsed');
+				} else {
+					$('.collapse').addClass('collapsed');
+					$this.addClass('collapsed');
+				}
+			});
+
 			$('.complete-overlay-close').on('click', function() {
 				$('.complete-overlay').addClass('hide');
 

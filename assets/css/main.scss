@@ -2038,6 +2038,25 @@
 			width: 100%;
 			border-radius: 15em;
 		}
+
+		.family-subtext {
+			font-size: 12pt;
+		}
+	}
+
+	.btn-collapse {
+		cursor: pointer;
+	}
+
+	.collapse {
+		transition: max-height .5s ease;
+	    max-height: 300px;
+	    overflow: hidden;
+
+		&.collapsed {
+			transition: max-height .5s ease;
+		    max-height: 0;
+		}
 	}
 
 	//typeahead
