@@ -1730,6 +1730,7 @@
 	  	  height: 100%;
 	  	  backface-visibility: hidden;
 		  -webkit-backface-visibility: hidden;
+		  -webkit-transform-style: preserve-3d;
 	  	}
 
 	  	/* Style the back side */
