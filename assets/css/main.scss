@@ -1667,8 +1667,13 @@
 			box-shadow: none;
 		}
 
+		.slick-arrow {
+			height: 55px;
+			width: 60px;
+		}
+
 		.slick-next {
-			right: 50px;
+			right: 15px;
 
 			&:before {
 				font-size: 60px;
@@ -1689,6 +1694,8 @@
 			background: _palette(bg);
 		}
 	}
+
+
 
 	//Honeypot
 	.awesome {
