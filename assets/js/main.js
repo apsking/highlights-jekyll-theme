@@ -93,7 +93,7 @@ const attendeeGroups = [
 	{ id: 86, maxCount: 5, attendees: ["Adrienne Ochs", "Ben Ochs"] },
 	{ id: 87, maxCount: 4, attendees: ["Tim Zanni", "Kristin Zanni"] },
 	{ id: 88, maxCount: 2, attendees: ["Jacob Watson"] },
-	{ id: 89, maxCount: 1, attendees: ["Michael Villasenor"] },
+	{ id: 89, maxCount: 1, attendees: ["Michael Villaseñor"] },
 	{ id: 90, maxCount: 2, attendees: [] },
 ];
 
