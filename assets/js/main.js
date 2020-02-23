@@ -96,6 +96,12 @@ const attendeeGroups = [
 	{ id: 89, maxCount: 1, attendees: ["Michael Villaseñor"] },
 	{ id: 90, maxCount: 2, attendees: ["Jacob Imlay"] },
 	{ id: 91, maxCount: 2, attendees: ["Sally Geisse"] },
+	{ id: 92, maxCount: 3, attendees: ["Barb Wenger", "Klaus Wenger"] },
+	{ id: 93, maxCount: 2, attendees: ["Katrina Friedrich"] },
+	{ id: 94, maxCount: 2, attendees: ["Bella Fiorenzo"] },
+	{ id: 95, maxCount: 1, attendees: ["Lindsey Poe"] },
+	{ id: 96, maxCount: 2, attendees: ["John Hanley", "Jeanie Hanley"] },
+	{ id: 97, maxCount: 1, attendees: ["Signe Lusk"] },
 ];
 
 const attendees = attendeeGroups
