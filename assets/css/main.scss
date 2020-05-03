@@ -221,7 +221,7 @@
 	}
 
 	nav {
-		background: _palette(bg);
+		background: _palette(accent1, bg);
 		min-height: 3em;
 		z-index: 1000;
 		box-shadow: inset 0 0 0 1px #dddddd;
@@ -236,6 +236,10 @@
 			li {
 				display: inline-block;
 				cursor: pointer;
+
+				a {
+					color: white;
+				}
 			}
 		}
 
@@ -1865,7 +1869,7 @@
 
 	.score {
 		float: right;
-	    background: _palette(accent1, bg);
+	    color: _palette(accent1, bg);
 	    width: 30px;
 	    height: 30px;
 	    border-radius: 15px;
@@ -1878,7 +1882,7 @@
 		cursor: pointer;
 		pointer-events: auto;
 		z-index: 1005;
-		color: #FFF;
+		background-color: #FFF;
 	}
 
 	.scoreboard-overlay {
