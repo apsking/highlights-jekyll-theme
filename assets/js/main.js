@@ -44,7 +44,7 @@ const attendeeGroups = [
 	{ id: 37, maxCount: 3, attendees: ["Grant Hedrick", "Bergenn Hedrick"] },
 	{ id: 38, maxCount: 1, attendees: ["Luis Rodriguez"] },
 	{ id: 39, maxCount: 2, attendees: ["Michael Clements", "Jaqueline Clements"] },
-	{ id: 40, maxCount: 2, attendees: ["Jason Clements"] },
+	{ id: 40, maxCount: 2, attendees: ["Jason Clements", "Brandi Clements"] },
 	{ id: 41, maxCount: 2, attendees: ["KelliNicole Clements", "Ryan Shipman"] },
 	{ id: 42, maxCount: 2, attendees: ["Paul Harimoto", "Ruth Harimoto"] },
 	{ id: 43, maxCount: 2, attendees: ["Julie Lim"] },
