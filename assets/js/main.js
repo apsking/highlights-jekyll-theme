@@ -60,7 +60,6 @@ const attendeeGroups = [
 	{ id: 53, maxCount: 2, attendees: ["Kim Fleer"] },
 	{ id: 54, maxCount: 1, attendees: ["Pete Bergene"] },
 	{ id: 55, maxCount: 1, attendees: ["Eric Kenji Lee"] },
-	{ id: 56, maxCount: 1, attendees: ["Angela King"] },
 	{ id: 57, maxCount: 2, attendees: ["Clive King", "Anne King"] },
 	{ id: 58, maxCount: 1, attendees: ["Robert King"] },
 	{ id: 59, maxCount: 4, attendees: ["Jane Verde", "Mark Verde"] },
