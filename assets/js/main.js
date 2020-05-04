@@ -102,6 +102,8 @@ const attendeeGroups = [
 	{ id: 96, maxCount: 2, attendees: ["John Hanley", "Jeanie Hanley"] },
 	{ id: 97, maxCount: 1, attendees: ["Signe Lusk"] },
 	{ id: 98, maxCount: 2, attendees: ["Sang-won Kim", "Neil Ford"] },
+	{ id: 99, maxCount: 2, attendees: ["Riyaz Shah", "Xio Alvarez"] },
+	{ id: 99, maxCount: 2, attendees: ["Sarah Khasrovi"] },
 ];
 
 const attendees = attendeeGroups
