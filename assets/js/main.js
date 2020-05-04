@@ -83,7 +83,7 @@ const attendeeGroups = [
 	{ id: 77, maxCount: 3, attendees: ["Ruth Schacht", "Noam Gryzm"] },
 	{ id: 78, maxCount: 2, attendees: ["Lizzy Andrews"] },
 	{ id: 79, maxCount: 2, attendees: ["Natividad Moreno Monge", "Manolo Ferreras Moreno"] },
-	{ id: 80, maxCount: 2, attendees: ["Jeff Witt"] },
+	{ id: 80, maxCount: 2, attendees: ["Jeff Witt", "Jon Stuber"] },
 	{ id: 81, maxCount: 3, attendees: ["Andy Ten", "Katya Ten"] },
 	{ id: 82, maxCount: 2, attendees: ["Maria Ivanteeva"] },
 	{ id: 83, maxCount: 2, attendees: ["Trevor Bates"] },
