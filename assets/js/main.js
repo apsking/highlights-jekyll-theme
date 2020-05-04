@@ -9,7 +9,7 @@ const attendeeGroups = [
 	{ id: 2, maxCount: 2, attendees: ["Shannon Howard", "Robert Howard"] },
 	{ id: 3, maxCount: 2, attendees: ["Heather Lowell", "Jarod Diaz"] },
 	{ id: 4, maxCount: 2, attendees: ["Edrina Nazaradeh"] },
-	{ id: 5, maxCount: 1, attendees: ["Taiga Harimoto"] },
+	{ id: 5, maxCount: 2, attendees: ["Taiga Harimoto"] },
 	{ id: 6, maxCount: 2, attendees: ["Harriet Courts", "John Courts"] },
 	{ id: 7, maxCount: 2, attendees: ["Nigel King", "Cassandra King"] },
 	{ id: 8, maxCount: 4, attendees: ["Ashley Taylor", "Jake Taylor"] },
