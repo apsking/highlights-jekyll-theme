@@ -305,7 +305,7 @@ function substringMatcher(strs) {
 			});
 
 			//Countdown timer
-			var end = new Date('08/08/2020 4:00 PM');
+			var end = new Date('07/31/2021 4:00 PM');
 
 		    var _second = 1000;
 		    var _minute = _second * 60;
