@@ -551,7 +551,7 @@ function substringMatcher(strs) {
 			const uniqueId = $(this).attr('data-id');
 			if (uniqueId) {
 				flipCount[uniqueId] = 1;
-				if (Object.keys(flipCount).length === 4) {
+				if (Object.keys(flipCount).length === 2) {
 					window.gameState.achievementCompleted('flipper');
 				}
 			}
