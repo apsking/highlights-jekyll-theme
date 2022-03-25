@@ -184,10 +184,10 @@
 						<span class="form-validation-msg already-rsvp-validation-msg hidden">It looks like your party already RSVP'ed<span class="rsvp-count"></span>! Please contact Kimberly and Alex if you would like to update it!</span>
 						<span class="form-validation-msg form-validation-msg-required invisible">Name is required.</span>
 					</div>
-					<div class="6u$ 12u$(small) form-input">
+					<!-- <div class="6u$ 12u$(small) form-input">
 						<input type="text" name="rsvp_mailing" id="rsvp_mailing" placeholder="Mailing Address" />
-					</div>
-					<div class="12u$ 12u$(small) form-input">
+					</div> -->
+					<div class="6u$ 12u$(small) form-input">
 						<select name="rsvp_attending" id="rsvp_attending" class="required-attending required-non-attending yes-no" disabled="disabled">
 							<option value="" selected disabled hidden>Can you attend?</option>
 							<option value="1">Yes, I can't wait to celebrate!</option>
@@ -204,7 +204,10 @@
 						<span class="form-validation-msg form-validation-msg-required invisible">Selection is required.</span>
 					</div>
 					<div class="6u$ 12u$(small) form-input attending-only hidden">
-						<div><a href="#schedule" class="scrolly">What is this?</a></div>
+						<select name="rsvp_count" id="rsvp_count" class="required-attending">
+							<option value="" selected disabled hidden>Number in your party</option>
+						</select>
+						<span class="form-validation-msg form-validation-msg-required invisible">Number in Party is required.</span>
 						<select name="rsvp_attending_farewell" id="rsvp_attending_farewell" class="required-attending yes-no hidden">
 							<option value="" disabled hidden>Will you attend the farewell brunch?</option>
 							<option value="1">Yes</option>
@@ -217,15 +220,15 @@
 						<span class="form-validation-msg passphrase-validation-msg hidden">Sorry, the passphrase is incorrect! Check your save-the-date once more. Contact Kimberly or Alex if you seemed to have misplaced it! </span>
 						<span class="form-validation-msg form-validation-msg-required invisible">Passphrase is required.</span>
 					</div>
-					<div class="6u 12u$(small) form-input hidden attending-only">
+					<!-- <div class="6u 12u$(small) form-input hidden attending-only">
 						<select name="rsvp_count" id="rsvp_count" class="required-attending">
 							<option value="" selected disabled hidden>Number in your party</option>
 						</select>
 						<span class="form-validation-msg form-validation-msg-required invisible">Number in Party is required.</span>
-					</div>
-					<div class="12u 12u$(small) form-input hidden attending-only">
+					</div> -->
+					<!-- <div class="12u 12u$(small) form-input hidden attending-only">
 						<input type="text" name="rsvp_song" id="rsvp_song" placeholder="Any song suggestions or requests?" class="" />
-					</div>
+					</div> -->
 					<div class="12u hidden">
 						<textarea name="rsvp_message" id="rsvp_message" rows="4"></textarea></div>
 				    <input class="awesome" autocomplete="no" type="text" name="name" placeholder="Your name here">
@@ -679,6 +682,13 @@
 			</h3>
 			<p>
 				Any time - starting now! And please, no later than May 15<sup>th</sup>, 2022. Thank you!
+			</p>
+			<h3>
+				Will guests be required to be vaccinated against COVID 19?
+			</h3>
+			<p>
+				In order to ensure the health and safety of our family and friends, we ask that all guests please be <i>fully</i> vaccinated against COVID 19.
+				We are following the CDC's guidelines regarding vaccination. <a href="https://www.cdc.gov/coronavirus/2019-ncov/vaccines/stay-up-to-date.html">See CDC Guidelines.</a>
 			</p>
 			<p>
 				Also, please note that, because we postponed our wedding to a later date, all previous RSVP responses have been cleared.
