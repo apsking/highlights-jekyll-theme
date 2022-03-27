@@ -188,9 +188,11 @@ function substringMatcher(strs) {
 
 					$('.typeahead-validation-loading').removeClass('hidden');
 					$(".already-rsvp-validation-msg").addClass('hidden');
-					const response = await $.get('https://script.google.com/macros/s/AKfycbwhE1PU3mnKGYSBRqaGQYiimwmo6S3GJjFKDRMyRezFzqIO6j8/exec',
+					const response = await $.get('https://script.google.com/macros/s/AKfycbwQmAxftVODeeKa2PJUUVGS_UXU4_08m6LslnvUP3TYdYUC_TKbfP3HmlcemtFi-V1Y/exec',
 						`groupId=${group.id}`);
 					$('.typeahead-validation-loading').addClass('hidden');
+
+					$('#rsvp_attending').removeAttr('disabled');
 
 					if (response.data.found) {
 						const rsvpLabel = response.data.count === "" ? "" :
@@ -198,33 +200,22 @@ function substringMatcher(strs) {
 						$(".already-rsvp-validation-msg .rsvp-count").text(rsvpLabel);
 						$(".already-rsvp-validation-msg").removeClass('hidden');
 					} else {
-						$('#rsvp_attending').removeAttr('disabled');
-						$('#submit_rsvp').removeAttr('disabled');
-
 						$('.typeahead-validation-msg').addClass('hidden');
 						$(".already-rsvp-validation-msg").addClass('hidden');
-
-						const countFirstOption = $('#rsvp_count').children().first();
-
-						$('#rsvp_group_id').val(group.id);
-
-						// const $rsvpInput = $('#rsvp_count');
-						// const options = Array.from({length: group.maxCount}, (v, i) => i + 1)
-						// 	.map(number => `<option value="${number}">${number}</option>`)
-						// 	.join('');
-						// $rsvpInput.empty();
-						// $rsvpInput.append(countFirstOption);
-						// $rsvpInput.append(options);
-
-						const $rsvpAttendees  = $('#rsvp_attendees');
-						const attendees = group.attendees
-							.map((name, i) => `<input type="checkbox" id="rsvp_attendee_${i}" name="rsvp_attendee_${i}" value="${name}">
-							<label for="rsvp_attendee_${i}"> ${name}</label>`)
-							.join('');
-						$rsvpAttendees.empty();
-						$rsvpAttendees.append(attendees);
-
 					}
+
+					$('#submit_rsvp').removeAttr('disabled');
+
+					$('#rsvp_group_id').val(group.id);
+
+					const $rsvpAttendees  = $('#rsvp_attendees');
+					const attendees = group.attendees
+						.map((name, i) => `<input type="checkbox" id="rsvp_attendee_${i}" name="rsvp_attendee_${i}" value="${name}">
+						<label for="rsvp_attendee_${i}"> ${name}</label>`)
+						.join('');
+					$rsvpAttendees.empty();
+					$rsvpAttendees.append(attendees);
+
 				}
 			}
 
