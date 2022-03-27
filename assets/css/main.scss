@@ -2091,3 +2091,23 @@
 			}
 		}
 	}
+
+	.bounce-arrow {
+        animation-name: bounce-arrow;
+        animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+		align-self: flex-end;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        margin: 0 auto 0 auto;
+        transform-origin: bottom;
+		color: white;
+    }
+    @keyframes bounce-arrow {
+        0%   { transform: scale(1,1)      translateY(0); }
+        10%  { transform: scale(1.1,.9)   translateY(0); }
+        30%  { transform: scale(.9,1.1)   translateY(-5px); }
+        50%  { transform: scale(1.05,.95) translateY(0); }
+        57%  { transform: scale(1,1)      translateY(-1px); }
+        64%  { transform: scale(1,1)      translateY(0); }
+        100% { transform: scale(1,1)      translateY(0); }
+    }
