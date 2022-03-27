@@ -176,18 +176,25 @@
 					<i class="spinner fas fa-3x fa-spinner"></i>
 				</div>
 				<div class="row uniform">
-					<div class="6u 12u$(small) form-input">
-						<input type="text" name="rsvp_name" id="rsvp_n" placeholder="Name (One representative from your party)" class="required-attending required-non-attending" />
+					<div class="6u 12u$(small) form-input passphrase">
+						<input type="text" name="rsvp_passphrase" id="rsvp_passphrase" placeholder="Passphrase (hint: it's 'popcorn')" autocomplete="off" />
+						<span class="form-validation-msg passphrase-validation-msg hidden">Sorry, the passphrase is incorrect! Check your save-the-date once more. Contact Kimberly or Alex if you seemed to have misplaced it! </span>
+						<span class="form-validation-msg form-validation-msg-required invisible">Passphrase is required.</span>
+					</div>
+					<div class="6u 12u$(small) form-input passphrase">
+						<p>
+							<a href="#faq_password" class="scrolly">What is the passphrase?</a>
+						</p>
+					</div>
+					<div class="6u 12u$(small) form-input hidden password_only">
+						<input type="text" name="rsvp_name" id="rsvp_n" placeholder="Name (One representative from your party)" class="required-attending required-non-attending" autocomplete="off"/>
 						<input type="hidden" name="rsvp_group_id" id="rsvp_group_id" class="hidden" />
 						<span class="form-validation-msg typeahead-validation-loading hidden"><i class="spinner fas fa-lg fa-spinner"></i></span>
 						<span class="form-validation-msg typeahead-validation-msg hidden">Sorry! This name isn't on RSVP list. Please contact Kimberly and Alex if you believe this is an error!</span>
 						<span class="form-validation-msg already-rsvp-validation-msg hidden">It looks like your party already RSVP'ed<span class="rsvp-count"></span>! Please contact Kimberly and Alex if you would like to update it!</span>
 						<span class="form-validation-msg form-validation-msg-required invisible">Name is required.</span>
 					</div>
-					<!-- <div class="6u$ 12u$(small) form-input">
-						<input type="text" name="rsvp_mailing" id="rsvp_mailing" placeholder="Mailing Address" />
-					</div> -->
-					<div class="6u$ 12u$(small) form-input">
+					<div class="6u 12u$(small) form-input hidden password_only">
 						<select name="rsvp_attending" id="rsvp_attending" class="required-attending required-non-attending yes-no" disabled="disabled">
 							<option value="" selected disabled hidden>Can you attend?</option>
 							<option value="1">Yes, I can't wait to celebrate!</option>
@@ -195,7 +202,7 @@
 						</select>
 						<span class="form-validation-msg form-validation-msg-required invisible">Selection is required.</span>
 					</div>
-					<div class="6u 12u$(small) form-input hidden attending-only">
+					<div class="12u 12u$(small) form-input hidden attending-only">
 						<select name="rsvp_attending_welcome" id="rsvp_attending_welcome" class="required-attending yes-no">
 							<option value="" selected disabled hidden>Will you attend the welcome reception?</option>
 							<option value="1">Yes</option>
@@ -203,36 +210,15 @@
 						</select>
 						<span class="form-validation-msg form-validation-msg-required invisible">Selection is required.</span>
 					</div>
-					<div class="6u$ 12u$(small) form-input attending-only hidden">
-						<select name="rsvp_count" id="rsvp_count" class="required-attending">
-							<option value="" selected disabled hidden>Number in your party</option>
-						</select>
-						<span class="form-validation-msg form-validation-msg-required invisible">Number in Party is required.</span>
-						<select name="rsvp_attending_farewell" id="rsvp_attending_farewell" class="required-attending yes-no hidden">
-							<option value="" disabled hidden>Will you attend the farewell brunch?</option>
-							<option value="1">Yes</option>
-							<option value="2" selected>No</option>
-						</select>
-						<span class="form-validation-msg form-validation-msg-required invisible">Selection is required.</span>
+					<div class="12u 12u$(small) form-input hidden attending-only">
+						<label for="rsvp_attendees" style="font-size: 14pt;">Who in your party will be attending?</label>
+						<span id="rsvp_attendees"></span>
+						<div id="rsvp_attendees_validation" class="form-validation-msg form-validation-msg-required invisible">Selection is required.</div>
 					</div>
-					<div class="6u 12u$(small) form-input hidden attending-only">
-						<input type="text" name="rsvp_passphrase" id="rsvp_passphrase" placeholder="Passphrase (hint: it's 'popcorn')" class="required-attending" />
-						<span class="form-validation-msg passphrase-validation-msg hidden">Sorry, the passphrase is incorrect! Check your save-the-date once more. Contact Kimberly or Alex if you seemed to have misplaced it! </span>
-						<span class="form-validation-msg form-validation-msg-required invisible">Passphrase is required.</span>
-					</div>
-					<!-- <div class="6u 12u$(small) form-input hidden attending-only">
-						<select name="rsvp_count" id="rsvp_count" class="required-attending">
-							<option value="" selected disabled hidden>Number in your party</option>
-						</select>
-						<span class="form-validation-msg form-validation-msg-required invisible">Number in Party is required.</span>
-					</div> -->
-					<!-- <div class="12u 12u$(small) form-input hidden attending-only">
-						<input type="text" name="rsvp_song" id="rsvp_song" placeholder="Any song suggestions or requests?" class="" />
-					</div> -->
 					<div class="12u hidden">
 						<textarea name="rsvp_message" id="rsvp_message" rows="4"></textarea></div>
 				    <input class="awesome" autocomplete="no" type="text" name="name" placeholder="Your name here">
-					<div class="12u">
+					<div class="12u hidden password_only">
 						<ul class="actions">
 							<li><input type="submit" value="Send RSVP" id="submit_rsvp" class="special" title="Send RSVP" disabled="disabled" /></li>
 						</ul>
@@ -243,10 +229,6 @@
 				</div>
 			</form>
 			<div class="rsvp-thanks hide">
-				<div class="small">
-					<i class="form-success-icon fas fa-check fa-6x"></i>
-					<h3>Thanks for your RSVP! We can't wait to celebrate with you!</h3>
-				</div>
 				<div class="large">
 					<h3>Thanks for your RSVP! Here is a little surprise from us to you. Enjoy!</h3>
 					<div class="game"></div>
@@ -686,6 +668,12 @@
 			<p>
 				Also, please note that, because we postponed our wedding to a later date, all previous RSVP responses have been cleared.
 				Please make sure to send your RSVP for the June 25<sup>st</sup>, 2022 date!
+			</p>
+			<h3 id="faq_password">
+				What is the RSVP passphrase?
+			</h3>
+			<p>
+				The passphrase is "popcorn".
 			</p>
 			<h3>
 				Will guests be required to be vaccinated against COVID 19?

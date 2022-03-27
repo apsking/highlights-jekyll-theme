@@ -142,6 +142,15 @@ function substringMatcher(strs) {
 				}
 			});
 
+			// Handle passphrase form
+			$("#rsvp_passphrase").keyup(function(e) {
+				if ($("#rsvp_passphrase").val() === "popcorn") {
+					$(".password_only").removeClass("hidden");
+					$(".passphrase").addClass("hidden");
+					$("#rsvp_n").focus();
+				}
+			})
+
 			//RSVP TypeAhead
 
 			$('#rsvp_n').typeahead({
@@ -158,8 +167,8 @@ function substringMatcher(strs) {
 			$('#rsvp_n').on('typeahead:select', handleRSVPSelection)
 
 			// Hack to update this value to stop chrome from auto filling
-			$('#rsvp_n').prev().attr('autocomplete', 'no');
-			$('#rsvp_n').attr('autocomplete', 'no');
+			$('#rsvp_n').prev().attr('autocomplete', 'off');
+			$('#rsvp_n').attr('autocomplete', 'off');
 
 			async function handleRSVPSelection(){
 				const value = $(this).val();
@@ -199,13 +208,22 @@ function substringMatcher(strs) {
 
 						$('#rsvp_group_id').val(group.id);
 
-						const $rsvpInput = $('#rsvp_count');
-						const options = Array.from({length: group.maxCount}, (v, i) => i + 1)
-							.map(number => `<option value="${number}">${number}</option>`)
+						// const $rsvpInput = $('#rsvp_count');
+						// const options = Array.from({length: group.maxCount}, (v, i) => i + 1)
+						// 	.map(number => `<option value="${number}">${number}</option>`)
+						// 	.join('');
+						// $rsvpInput.empty();
+						// $rsvpInput.append(countFirstOption);
+						// $rsvpInput.append(options);
+
+						const $rsvpAttendees  = $('#rsvp_attendees');
+						const attendees = group.attendees
+							.map((name, i) => `<input type="checkbox" id="rsvp_attendee_${i}" name="rsvp_attendee_${i}" value="${name}">
+							<label for="rsvp_attendee_${i}"> ${name}</label>`)
 							.join('');
-						$rsvpInput.empty();
-						$rsvpInput.append(countFirstOption);
-						$rsvpInput.append(options);
+						$rsvpAttendees.empty();
+						$rsvpAttendees.append(attendees);
+
 					}
 				}
 			}
@@ -782,6 +800,15 @@ function substringMatcher(strs) {
 			}
 		});
 
+		if ($("#rsvp_attending").val() === "1" && Array.from(form.elements)
+			.filter(elem => elem.id.includes("attendee") && elem.checked)
+			.length === 0) {
+			$("#rsvp_attendees_validation").removeClass("invisible");
+			valid = false;
+		} else {
+			$("#rsvp_attendees_validation").addClass("invisible");
+		}
+
 		return valid;
 	}
 
@@ -812,6 +839,9 @@ function substringMatcher(strs) {
 			var element = elements[name];
 
 			// singular form elements just have one value
+			if (element.type === 'checkbox' && !element.checked) {
+				return;
+			}
 			formData[name] = element.value;
 
 			// when our element has multiple items, get their values
@@ -829,6 +859,9 @@ function substringMatcher(strs) {
 				formData[name] = data.join(', ');
 			}
 		});
+
+		formData['rsvp_count'] = Object.keys(formData).filter(key => key.includes('attendee')).length;
+		fields.push('rsvp_count')
 
 		// add form-specific values into the data
 		formData.formDataNameOrder = JSON.stringify(fields);
