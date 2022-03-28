@@ -41,7 +41,7 @@ const attendeeGroups = [
 	{ id: 34, maxCount: 2, attendees: ["Jesse Pratt"], addlAttendees: ["Guest"] },
 	{ id: 35, maxCount: 2, attendees: ["Travis Tallan"], addlAttendees: ["Guest"] },
 	{ id: 36, maxCount: 3, attendees: ["Roman Daberkow", "Valerie Daberkow"], addlAttendees: ["Claire Daberkow"] },
-	{ id: 37, maxCount: 3, attendees: ["Grant Hedrick", "Bergenn Hedrick"], addlAttendees: ["Baby Hedrick"] },
+	{ id: 37, maxCount: 4, attendees: ["Grant Hedrick", "Bergenn Hedrick"], addlAttendees: ["Lee Hedrick", "Leighton Hedrick"] },
 	{ id: 38, maxCount: 2, attendees: ["Luis Rodriguez"], addlAttendees: ["Guest"] },
 	{ id: 39, maxCount: 3, attendees: ["Michael Clements", "Jaclyn Clements"], addlAttendees: ["Connor Clements"] },
 	{ id: 40, maxCount: 2, attendees: ["Jason Clements", "Brandi Clements"] },
