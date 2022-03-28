@@ -2111,3 +2111,9 @@
         64%  { transform: scale(1,1)      translateY(0); }
         100% { transform: scale(1,1)      translateY(0); }
     }
+
+	.attendee_guest {
+		max-width: 200px;
+		display: inline-block !important;
+		margin-right: 10px;
+	}

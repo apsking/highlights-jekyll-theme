@@ -151,6 +151,12 @@ function substringMatcher(strs) {
 				}
 			})
 
+			// Handle Guest RSVP inputs
+			$("#rsvp_attendees").on("keyup", function(e) {
+				const target = $(e.target);
+				$(`#${target.attr('data-checkbox')}`).val(target.val())
+			})
+
 			//RSVP TypeAhead
 
 			$('#rsvp_n').typeahead({
@@ -211,7 +217,9 @@ function substringMatcher(strs) {
 					const $rsvpAttendees  = $('#rsvp_attendees');
 					const attendees = group.attendees.concat((group.addlAttendees || []))
 						.map((name, i) => `<input type="checkbox" id="rsvp_attendee_${i}" name="rsvp_attendee_${i}" value="${name}">
-						<label for="rsvp_attendee_${i}"> ${name}</label>`)
+						${name !== "Guest" ? `<label for="rsvp_attendee_${i}"> ${name}</label>` :
+						`<label for="rsvp_attendee_${i}"></label><input type="text" class="attendee_guest" val="Guest" placeholder="Type guest's name" data-checkbox="rsvp_attendee_${i}"></input>`
+					}`)
 						.join('');
 					$rsvpAttendees.empty();
 					$rsvpAttendees.append(attendees);
