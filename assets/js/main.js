@@ -144,7 +144,7 @@ function substringMatcher(strs) {
 
 			// Handle passphrase form
 			$("#rsvp_passphrase").keyup(function(e) {
-				if ($("#rsvp_passphrase").val() === "popcorn") {
+				if ($("#rsvp_passphrase").val().toLowerCase() === "popcorn") {
 					$(".password_only").removeClass("hidden");
 					$(".passphrase").addClass("hidden");
 					$("#rsvp_n").focus();
